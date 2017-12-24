@@ -1,15 +1,8 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2017/12/24 11:18:55                          */
+/* Created on:     2017/12/25 3:48:11                           */
 /*==============================================================*/
-
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('bachelor') and o.name = 'FK_BACHELOR_IHSTUDENT_READER')
-alter table bachelor
-   drop constraint FK_BACHELOR_IHSTUDENT_READER
-go
+USE Library;
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
@@ -20,9 +13,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('borrowRecord') and o.name = 'FK_BORROWRE_RELATIONS_READER')
+   where r.fkeyid = object_id('borrowRecord') and o.name = 'FK_BORROWRE_RELATIONS_LIBRARYC')
 alter table borrowRecord
-   drop constraint FK_BORROWRE_RELATIONS_READER
+   drop constraint FK_BORROWRE_RELATIONS_LIBRARYC
 go
 
 if exists (select 1
@@ -48,9 +41,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('damageRecord') and o.name = 'FK_DAMAGERE_RELATIONS_READER')
+   where r.fkeyid = object_id('damageRecord') and o.name = 'FK_DAMAGERE_RELATIONS_LIBRARYC')
 alter table damageRecord
-   drop constraint FK_DAMAGERE_RELATIONS_READER
+   drop constraint FK_DAMAGERE_RELATIONS_LIBRARYC
 go
 
 if exists (select 1
@@ -62,9 +55,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('master') and o.name = 'FK_MASTER_IHSTUDENT_READER')
-alter table master
-   drop constraint FK_MASTER_IHSTUDENT_READER
+   where r.fkeyid = object_id('reader') and o.name = 'FK_READER_RELATIONS_LIBRARYC')
+alter table reader
+   drop constraint FK_READER_RELATIONS_LIBRARYC
 go
 
 if exists (select 1
@@ -86,20 +79,6 @@ if exists (select 1
    where r.fkeyid = object_id('reservedBook') and o.name = 'FK_RESERVED_RELATIONS_RSERVEDB')
 alter table reservedBook
    drop constraint FK_RESERVED_RELATIONS_RSERVEDB
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('worker') and o.name = 'FK_WORKER_IHREADER_READER')
-alter table worker
-   drop constraint FK_WORKER_IHREADER_READER
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('bachelor')
-            and   type = 'U')
-   drop table bachelor
 go
 
 if exists (select 1
@@ -209,18 +188,27 @@ go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('master')
+           where  id = object_id('libraryCard')
             and   type = 'U')
-   drop table master
+   drop table libraryCard
 go
 
 if exists (select 1
             from  sysindexes
            where  id    = object_id('reader')
-            and   name  = 'Relationship_11_FK'
+            and   name  = 'Relationship_14_FK'
             and   indid > 0
             and   indid < 255)
-   drop index reader.Relationship_11_FK
+   drop index reader.Relationship_14_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('reader')
+            and   name  = 'Relationship_13_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index reader.Relationship_13_FK
 go
 
 if exists (select 1
@@ -269,34 +257,14 @@ if exists (select 1
    drop table rservedBookClass
 go
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('worker')
-            and   type = 'U')
-   drop table worker
-go
-
-/*==============================================================*/
-/* Table: bachelor                                              */
-/*==============================================================*/
-create table bachelor (
-   borrowCardID         char(6)              not null,
-   typeID               smallint             null,
-   name                 char(20)             null,
-   regTime              datetime             null,
-   dueTime              datetime             null,
-   constraint PK_BACHELOR primary key (borrowCardID)
-)
-go
-
 /*==============================================================*/
 /* Table: borrowRecord                                          */
 /*==============================================================*/
 create table borrowRecord (
-   borrowIndex          int                  not null,
-   borrowCardID         char(6)              not null,
-   circuBookNo          char(12)             not null,
-   borrowTime           datetime             null,
+   borrowIndex          int                  identity,
+   libraryCardID        int                  not null,
+   circuBookNo          int                  not null,
+   borrowDuration       int                  null,
    returnTime           datetime             null,
    dateToReturn         datetime             null,
    renewNum             smallint             null,
@@ -308,7 +276,7 @@ go
 /* Index: Relationship_4_FK                                     */
 /*==============================================================*/
 create index Relationship_4_FK on borrowRecord (
-borrowCardID ASC
+libraryCardID ASC
 )
 go
 
@@ -324,7 +292,7 @@ go
 /* Table: circuBook                                             */
 /*==============================================================*/
 create table circuBook (
-   circuBookNo          char(12)             not null,
+   circuBookNo          int                  identity,
    libaryID             int                  not null,
    isbn                 char(13)             not null,
    constraint PK_CIRCUBOOK primary key nonclustered (circuBookNo)
@@ -367,7 +335,7 @@ go
 /* Table: damageReason                                          */
 /*==============================================================*/
 create table damageReason (
-   damgeReasonIndex     smallint             not null,
+   damgeReasonIndex     smallint             identity,
    damageExplain        text                 null,
    constraint PK_DAMAGEREASON primary key nonclustered (damgeReasonIndex)
 )
@@ -377,10 +345,10 @@ go
 /* Table: damageRecord                                          */
 /*==============================================================*/
 create table damageRecord (
-   damageIndex          int                  not null,
+   damageIndex          int                  identity,
    damgeReasonIndex     smallint             not null,
-   borrowCardID         char(6)              not null,
-   circuBookNo          char(12)             not null,
+   libraryCardID        int                  not null,
+   circuBookNo          int                  not null,
    damageTime           datetime             null,
    damageMoney          money                null,
    damageRemark         text                 null,
@@ -400,7 +368,7 @@ go
 /* Index: Relationship_6_FK                                     */
 /*==============================================================*/
 create index Relationship_6_FK on damageRecord (
-borrowCardID ASC
+libraryCardID ASC
 )
 go
 
@@ -424,15 +392,14 @@ create table library (
 go
 
 /*==============================================================*/
-/* Table: master                                                */
+/* Table: libraryCard                                           */
 /*==============================================================*/
-create table master (
-   borrowCardID         char(6)              not null,
-   typeID               smallint             null,
+create table libraryCard (
+   libraryCardID        int                  identity,
    name                 char(20)             null,
    regTime              datetime             null,
    dueTime              datetime             null,
-   constraint PK_MASTER primary key (borrowCardID)
+   constraint PK_LIBRARYCARD primary key nonclustered (libraryCardID)
 )
 go
 
@@ -440,19 +407,26 @@ go
 /* Table: reader                                                */
 /*==============================================================*/
 create table reader (
-   borrowCardID         char(6)              not null,
+   ID                   char(18)             not null,
+   libraryCardID        int                  null,
    typeID               smallint             not null,
-   name                 char(20)             null,
-   regTime              datetime             null,
-   dueTime              datetime             null,
-   constraint PK_READER primary key nonclustered (borrowCardID)
+   sex                  char(2)              null,
+   constraint PK_READER primary key nonclustered (ID)
 )
 go
 
 /*==============================================================*/
-/* Index: Relationship_11_FK                                    */
+/* Index: Relationship_13_FK                                    */
 /*==============================================================*/
-create index Relationship_11_FK on reader (
+create index Relationship_13_FK on reader (
+libraryCardID ASC
+)
+go
+
+/*==============================================================*/
+/* Index: Relationship_14_FK                                    */
+/*==============================================================*/
+create index Relationship_14_FK on reader (
 typeID ASC
 )
 go
@@ -461,9 +435,9 @@ go
 /* Table: readerType                                            */
 /*==============================================================*/
 create table readerType (
-   typeID               smallint             not null,
+   typeID               smallint             identity,
    typeName             char(20)             null,
-   borrowTime           datetime             null,
+   borrowDuration       int                  null,
    reBorrowNum          smallint             null,
    constraint PK_READERTYPE primary key nonclustered (typeID)
 )
@@ -512,32 +486,14 @@ create table rservedBookClass (
 )
 go
 
-/*==============================================================*/
-/* Table: worker                                                */
-/*==============================================================*/
-create table worker (
-   borrowCardID         char(6)              not null,
-   typeID               smallint             null,
-   name                 char(20)             null,
-   regTime              datetime             null,
-   dueTime              datetime             null,
-   constraint PK_WORKER primary key (borrowCardID)
-)
-go
-
-alter table bachelor
-   add constraint FK_BACHELOR_IHSTUDENT_READER foreign key (borrowCardID)
-      references reader (borrowCardID)
-go
-
 alter table borrowRecord
    add constraint FK_BORROWRE_RELATIONS_CIRCUBOO foreign key (circuBookNo)
       references circuBook (circuBookNo)
 go
 
 alter table borrowRecord
-   add constraint FK_BORROWRE_RELATIONS_READER foreign key (borrowCardID)
-      references reader (borrowCardID)
+   add constraint FK_BORROWRE_RELATIONS_LIBRARYC foreign key (libraryCardID)
+      references libraryCard (libraryCardID)
 go
 
 alter table circuBook
@@ -556,8 +512,8 @@ alter table damageRecord
 go
 
 alter table damageRecord
-   add constraint FK_DAMAGERE_RELATIONS_READER foreign key (borrowCardID)
-      references reader (borrowCardID)
+   add constraint FK_DAMAGERE_RELATIONS_LIBRARYC foreign key (libraryCardID)
+      references libraryCard (libraryCardID)
 go
 
 alter table damageRecord
@@ -565,9 +521,9 @@ alter table damageRecord
       references damageReason (damgeReasonIndex)
 go
 
-alter table master
-   add constraint FK_MASTER_IHSTUDENT_READER foreign key (borrowCardID)
-      references reader (borrowCardID)
+alter table reader
+   add constraint FK_READER_RELATIONS_LIBRARYC foreign key (libraryCardID)
+      references libraryCard (libraryCardID)
 go
 
 alter table reader
@@ -583,10 +539,5 @@ go
 alter table reservedBook
    add constraint FK_RESERVED_RELATIONS_RSERVEDB foreign key (isbn)
       references rservedBookClass (isbn)
-go
-
-alter table worker
-   add constraint FK_WORKER_IHREADER_READER foreign key (borrowCardID)
-      references reader (borrowCardID)
 go
 
