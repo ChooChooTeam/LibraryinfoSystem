@@ -25,7 +25,12 @@ namespace LibraryinfoSystem
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            var list = Utility.SQLHelper.testDB();
+            MessageBox.Show(list.Count.ToString());
+            foreach(var i in list)
+            {
+                MessageBox.Show(i);
+            }
         }
     }
 }

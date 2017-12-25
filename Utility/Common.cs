@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Utility
 {
-    class Common
+    public class Common
     {
         /// <summary>
         /// 获得数据库配置信息,默认位于当前主项目的App.config中
