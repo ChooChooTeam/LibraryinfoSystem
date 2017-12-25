@@ -25,12 +25,8 @@ namespace LibraryinfoSystem
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var list = Utility.SQLHelper.testDB();
-            MessageBox.Show(list.Count.ToString());
-            foreach(var i in list)
-            {
-                MessageBox.Show(i);
-            }
+            var book = DAL.BookInfo.queryBookInfo("9780387202488");
+            MessageBox.Show(book.BookName);
         }
     }
 }
