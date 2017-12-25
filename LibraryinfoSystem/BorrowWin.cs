@@ -39,6 +39,10 @@ namespace LibraryinfoSystem
             LibraryCard card = BorrowWinAS.GetLibraryCardIdInfo(libraryCardID);
             textBox2.Text = card._Name;
 
+            Reader reader = BorrowWinAS.GetreaderInfo(libraryCardID);
+            ReaderType readerType = BorrowWinAS.GetreaderTypeInfo(reader.TypeID);
+            textBox5.Text = readerType.TypeName;
+
 
 
         }

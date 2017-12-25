@@ -11,7 +11,7 @@ namespace DAL
 {
     public class LibraryCardIfo
     {
-        public static LibraryCard queryLibraryCardIfo(string LibraryCardID)
+        public static LibraryCard QueryLibraryCardIfo(string LibraryCardID)
         {
             string sql = "SELECT * FROM libraryCard WHERE  libraryCardID= @libraryCardID";
             SqlParameter para = new SqlParameter("@libraryCardID", LibraryCardID);

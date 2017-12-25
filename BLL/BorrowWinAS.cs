@@ -17,7 +17,7 @@ namespace BLL
         public static LibraryCard GetLibraryCardIdInfo(String libraryCardID) {
             try
             {
-                LibraryCard card = LibraryCardIfo.queryLibraryCardIfo(libraryCardID);
+                LibraryCard card = LibraryCardIfo.QueryLibraryCardIfo(libraryCardID);
                 return card;
             }
             catch (Exception)
@@ -25,8 +25,36 @@ namespace BLL
                 
                 throw;
             }
+           
+
             
 
+        }
+        public static Reader GetreaderInfo(String libraryCardID)
+        {
+            try
+            {
+                Reader reader = ReaderInfo.QueryReaderInfo(libraryCardID);
+                return reader;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public static ReaderType GetreaderTypeInfo(int typeID)
+        {
+            try
+            {
+                ReaderType readerType = ReaderTypeInfo.QueryReaderTypeInfo(typeID);
+                return readerType;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
