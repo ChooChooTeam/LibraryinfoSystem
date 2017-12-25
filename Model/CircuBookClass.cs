@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Utility
+namespace Model
 {
-    public class Class1
+    class CircuBookClass
     {
     }
 }
