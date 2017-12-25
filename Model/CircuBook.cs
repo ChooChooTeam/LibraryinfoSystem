@@ -6,7 +6,33 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class CircuBook
+    public class CircuBook
     {
+        private int _circuBookNo;
+        public int CircuBookNo
+        {
+            get
+            {
+                return _circuBookNo;
+            }
+        }
+
+        private int _libaryID;
+        public int LibraryID
+        {
+            get
+            {
+                return _libaryID;
+            }
+        }
+
+        private string _ISBN;
+        public string ISBN
+        {
+            get
+            {
+                return _ISBN;
+            }
+        }
     }
 }
