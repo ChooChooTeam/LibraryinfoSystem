@@ -8,6 +8,12 @@ namespace Model
 {
      public  class Library
     {
+        Library(int libraryID,string libraryName,string libraryLocation)
+        {
+            _libraryID = libraryID;
+            _libraryName = libraryName;
+            _libraryLocation = libraryLocation;
+        }
         private int _libraryID;
         public int LibraryID
         {

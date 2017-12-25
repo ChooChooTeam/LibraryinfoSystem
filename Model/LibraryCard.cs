@@ -8,6 +8,13 @@ namespace Model
 {
     public class LibraryCard
     {
+        LibraryCard(int libraryCardID,string name,DateTime regTime,DateTime dueTime)
+        {
+            _libraryCardID = libraryCardID;
+            _name = name;
+            _regTime = regTime;
+            _dueTime = dueTime;
+        }
         private int _libraryCardID;
         public int LibraryCardID
         {

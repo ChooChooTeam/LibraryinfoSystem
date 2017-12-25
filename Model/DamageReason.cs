@@ -8,6 +8,11 @@ namespace Model
 {
     public class DamageReason
     {
+        DamageReason(int damageReasonIndex,string damageExplain)
+        {
+            _damageReasonIndex = damageReasonIndex;
+            _damageExplain = damageExplain;
+        }
         private int _damageReasonIndex;
         public int DamageReasonIndex
         {
