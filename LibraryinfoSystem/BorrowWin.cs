@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
+using Model;
 namespace LibraryinfoSystem
 {
     public partial class BorrowWin : Form
     {
-        private BorrowWinAS helper=new BorrowWinAS();
         public BorrowWin()
         {
             InitializeComponent();
@@ -36,7 +36,10 @@ namespace LibraryinfoSystem
         private void button1_Click(object sender, EventArgs e)
         {
             String libraryCardID = textBox1.Text;
-            
+            LibraryCard card = BorrowWinAS.GetLibraryCardIdInfo(libraryCardID);
+            textBox2.Text = card._Name;
+
+
 
         }
     }
