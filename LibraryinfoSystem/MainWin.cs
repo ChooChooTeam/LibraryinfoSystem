@@ -32,6 +32,9 @@ namespace LibraryinfoSystem
             LzTest form = new LzTest();
             form.Show();
 
+            var book = DAL.BookInfo.queryABookInfo("2");
+            MessageBox.Show(book[0].ToString()+book[1].ToString());
+
         }
 
         private void bthExample_Click(object sender, EventArgs e)
