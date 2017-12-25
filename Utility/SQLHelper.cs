@@ -9,11 +9,26 @@ using System.Threading.Tasks;
 
 namespace Utility
 {
-    class SQLHelper
+    public class SQLHelper
     {
         private static string sqlInfo = Common.getSqlConStr();
 
         
+        // 在取出数据之前,不能关闭任何链接
+        // 所以,要么在外部关闭连接
+        // 要么就直接取出所有数据,在finally中全部关闭
+        public static List<string> testDB()
+        {
+            List<string> list = new List<string>(15);
+            SqlDataReader sdr = query("SELECT * FROM circuBookClass");
+
+            while(sdr.HasRows && sdr.Read())
+            {
+                list.Add(Convert.ToString(sdr["bookName"]));
+            }
+
+            return list;
+        }
 
         /// <summary>
         /// 连接数据库并执行一条查询指令,返回查询数据的游标
@@ -34,7 +49,12 @@ namespace Utility
                 conn = new SqlConnection(sqlInfo);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddRange(param);
+
+                if(param.Length != 0)
+                {
+                    cmd.Parameters.AddRange(param);
+                }
+               
                 sdr = cmd.ExecuteReader();
 
                 if (sdr.HasRows)
@@ -46,16 +66,17 @@ namespace Utility
                     return null;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+          
                 return null;
             }
             finally
             {
-                if (conn!= null)
-                {
-                    conn.Dispose();
-                }
+                //if (conn!= null)
+                //{
+                //    conn.Dispose();
+                //}
             }
         }
 
