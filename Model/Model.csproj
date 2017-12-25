@@ -43,8 +43,13 @@
     <Compile Include="BorrowRecord.cs" />
     <Compile Include="CircuBook.cs" />
     <Compile Include="CircuBookClass.cs" />
+    <Compile Include="DamageReason.cs" />
+    <Compile Include="DamageRecord.cs" />
+    <Compile Include="Library.cs" />
     <Compile Include="LibraryCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reader.cs" />
+    <Compile Include="ReaderType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
