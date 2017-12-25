@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bthExample = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -43,14 +43,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // bthExample
             // 
-            this.button2.Location = new System.Drawing.Point(99, 130);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "还书";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bthExample.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bthExample.Location = new System.Drawing.Point(99, 130);
+            this.bthExample.Name = "bthExample";
+            this.bthExample.Size = new System.Drawing.Size(75, 23);
+            this.bthExample.TabIndex = 1;
+            this.bthExample.Text = "显示信息";
+            this.bthExample.UseVisualStyleBackColor = true;
+            this.bthExample.Click += new System.EventHandler(this.bthExample_Click);
             // 
             // button3
             // 
@@ -66,12 +68,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(282, 253);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bthExample);
             this.Controls.Add(this.button1);
             this.Name = "MainWin";
-            this.Text = "MainWin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Example12.1";
             this.ResumeLayout(false);
 
         }
@@ -79,7 +83,7 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bthExample;
         private System.Windows.Forms.Button button3;
     }
 }
