@@ -8,6 +8,16 @@ namespace Model
 {
     public class BorrowRecord
     {
+        BorrowRecord(int borrowIndex,int libraryCardID,int circuBookNo,int borrowDuration,DateTime returnTime,DateTime dateToReturn,int reNewNum)
+        {
+            _borrowIndex = borrowIndex;
+            _libraryCardID = libraryCardID;
+            _circuBookNo = circuBookNo;
+            _borrowDuration = borrowDuration;
+            _returnTime = returnTime;
+            _dateToReturn = dateToReturn;
+            _reNewNum = ReNewNum;
+        }
         private int _borrowIndex;
         public int Index
         {

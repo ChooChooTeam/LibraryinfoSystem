@@ -8,6 +8,16 @@ namespace Model
 {
     public class DamageRecord
     {
+        DamageRecord(int damageIndex,int damageReasonIndex,int libraryID,int circuBookNo,DateTime damageTime,decimal damageMoney,string damageRemark)
+        {
+            _damageIndex = damageIndex;
+            _damageReasonIndex = damageReasonIndex;
+            _libraryID = libraryID;
+            _circuBookNo = circuBookNo;
+            _damageTime = damageTime;
+            _damageMoney = damageMoney;
+            _damageRemark = damageRemark;
+        }
         private int _damageIndex;
         public int DamageIndex
         {
@@ -35,12 +45,12 @@ namespace Model
             }
         }
 
-        private int _cicuBookNo;
-        public int CicuBookNo
+        private int _circuBookNo;
+        public int CircuBookNo
         {
             get
             {
-                return _cicuBookNo;
+                return _circuBookNo;
             }
         }
 

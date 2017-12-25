@@ -8,6 +8,12 @@ namespace Model
 {
     public class CircuBook
     {
+        CircuBook(int circuBookNo,int libraryID,string ISBN)
+        {
+            _circuBookNo = circuBookNo;
+            _libraryID = libraryID;
+            _ISBN = ISBN;
+        }
         private int _circuBookNo;
         public int CircuBookNo
         {
@@ -17,12 +23,12 @@ namespace Model
             }
         }
 
-        private int _libaryID;
+        private int _libraryID;
         public int LibraryID
         {
             get
             {
-                return _libaryID;
+                return _libraryID;
             }
         }
 
