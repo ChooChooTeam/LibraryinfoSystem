@@ -245,4 +245,4 @@ ModelManifest.xml
 .fake/
 
 # Every have different database name 
-./LibraryinfoSystem/App.config
+LibraryinfoSystem/App.config
