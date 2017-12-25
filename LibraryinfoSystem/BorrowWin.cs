@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using BLL;
 namespace LibraryinfoSystem
 {
     public partial class BorrowWin : Form
     {
+        private BorrowWinAS helper=new BorrowWinAS();
         public BorrowWin()
         {
             InitializeComponent();
@@ -30,6 +31,13 @@ namespace LibraryinfoSystem
             Form4 f4 = new Form4();
             f4.MdiParent = this;
             f4.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String libraryCardID = textBox1.Text;
+            
+
         }
     }
 }
