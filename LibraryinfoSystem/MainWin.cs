@@ -25,7 +25,8 @@ namespace LibraryinfoSystem
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            var book = DAL.BookInfo.queryBookInfo("9780387202488");
+            MessageBox.Show(book.BookName);
         }
 
         private void bthExample_Click(object sender, EventArgs e)

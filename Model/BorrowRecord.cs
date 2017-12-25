@@ -6,26 +6,80 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class BorrowRecord
+    public class BorrowRecord
     {
-        private int _index;
+        BorrowRecord(int borrowIndex,int libraryCardID,int circuBookNo,int borrowDuration,DateTime returnTime,DateTime dateToReturn,int reNewNum)
+        {
+            _borrowIndex = borrowIndex;
+            _libraryCardID = libraryCardID;
+            _circuBookNo = circuBookNo;
+            _borrowDuration = borrowDuration;
+            _returnTime = returnTime;
+            _dateToReturn = dateToReturn;
+            _reNewNum = ReNewNum;
+        }
+        private int _borrowIndex;
         public int Index
         {
             get
             {
-                return _index;
+                return _borrowIndex;
             }
         }
 
-        private int _cardID;
+        private int _libraryCardID;
         public int CardID
         {
             get
             {
-                return _cardID;
+                return _libraryCardID;
             }
         }
 
+        private int _circuBookNo;
+        public int BookNo
+        {
+            get
+            {
+                return _circuBookNo;
+            }
+        }
+
+        private int _borrowDuration;
+        public int Duration
+        {
+            get
+            {
+                return _borrowDuration;
+            }
+        }
+
+        private DateTime _returnTime;
+        public DateTime ReturnTime
+        {
+            get
+            {
+                return _returnTime;
+            }
+        }
+
+        private DateTime _dateToReturn;
+        private DateTime DateToReturn
+        {
+            get
+            {
+                return _dateToReturn;
+            }
+        }
+
+        private int _reNewNum;
+        private int ReNewNum
+        {
+            get
+            {
+                return _reNewNum;
+            }
+        }
 
     }
 }
