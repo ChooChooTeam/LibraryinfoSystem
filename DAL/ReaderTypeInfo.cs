@@ -32,7 +32,8 @@ namespace DAL
             string typeName = ReaderType.GetString(ReaderType.GetOrdinal("typeName"));
             DateTime borrowDuration = ReaderType.GetDateTime(ReaderType.GetOrdinal("borrowDuration"));
             int reBorrowNum = ReaderType.GetInt16(ReaderType.GetOrdinal("reBorrowNum"));
-            return new ReaderType(typeID, typeName, borrowDuration, reBorrowNum);
+            int maxBorrowNum = ReaderType.GetInt16(ReaderType.GetOrdinal("maxBorrowNum"));
+            return new ReaderType(typeID, typeName, borrowDuration, reBorrowNum,maxBorrowNum);
         }
     }
 }
