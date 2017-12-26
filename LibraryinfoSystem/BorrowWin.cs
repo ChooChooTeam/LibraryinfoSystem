@@ -43,8 +43,9 @@ namespace LibraryinfoSystem
             ReaderType readerType = BorrowWinAS.GetreaderTypeInfo(reader.TypeID);
             textBox5.Text = readerType.TypeName;
 
-
-
+            //string sql = "SELECT * FROM circuBookClass";
+            //dgvBook.DataSource = SQLHelper.getDataTable(sql);
+             
         }
     }
 }
