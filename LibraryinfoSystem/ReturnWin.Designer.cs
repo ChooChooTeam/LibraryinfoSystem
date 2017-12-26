@@ -162,7 +162,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ReturnWin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "还书";
+            this.Text = "还书服务";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReturnWin_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
