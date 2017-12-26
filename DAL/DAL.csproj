@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookInfo.cs" />
+    <Compile Include="ReaderTypeInfo.cs" />
+    <Compile Include="ReaderInfo.cs" />
+    <Compile Include="LibraryCardIfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
