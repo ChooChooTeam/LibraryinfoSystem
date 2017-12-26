@@ -39,7 +39,8 @@ namespace LibraryinfoSystem
 
         private void bthExample_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("欢迎欢迎");
+            ReturnWin returnW = new ReturnWin();
+            returnW.Show();
         }
     }
 }

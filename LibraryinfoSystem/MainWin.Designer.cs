@@ -50,7 +50,7 @@
             this.bthExample.Name = "bthExample";
             this.bthExample.Size = new System.Drawing.Size(75, 23);
             this.bthExample.TabIndex = 1;
-            this.bthExample.Text = "显示信息";
+            this.bthExample.Text = "还书";
             this.bthExample.UseVisualStyleBackColor = true;
             this.bthExample.Click += new System.EventHandler(this.bthExample_Click);
             // 
