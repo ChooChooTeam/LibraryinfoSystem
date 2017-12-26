@@ -54,7 +54,6 @@ namespace LibraryinfoSystem
             textBox3.Text = dataTable.Rows.Count.ToString();
             DataRow[] datarows=dataTable.Select("remainDays<0");
             int overTimeBookcount=datarows.Count();
-            textBox6.Text = overTimeBookcount.ToString();
             // int canBorrowN=readerType.
 
 
@@ -95,10 +94,12 @@ namespace LibraryinfoSystem
 
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
-            if (this.textBox9.Text.Length == 5)
-            {
-                label14.Text = "label数据";
-            }
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
