@@ -30,6 +30,11 @@ namespace LibraryinfoSystem
             string sql = "SELECT isbn,bookName,bookNum FROM circuBookClass";
             dgvBook.DataSource = SQLHelper.getDataTable(sql);
 
+            var list = DAL.DamageInfo.getAllReason();
+            foreach(var i in list)
+            {
+                MessageBox.Show(i.DamageReasonIndex.ToString() + i.DamageExplain.ToString());
+            }
         }
 
         private void dgvBook_CellContentClick(object sender, DataGridViewCellEventArgs e)
