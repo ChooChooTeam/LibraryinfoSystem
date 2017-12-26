@@ -43,19 +43,40 @@ namespace LibraryinfoSystem
 
             string sql = "select  borrowRecord.circuBookNo,circuBookClass.bookName,borrowRecord.borrowDuration,borrowRecord.dateToReturn,(case  when borrowRecord.dateToReturn>GETDATE() then datediff(DAY,borrowRecord.dateToReturn,GETDATE())else -datediff(DAY,borrowRecord.dateToReturn,GETDATE())end)  as remainDays,borrowRecord.renewNum " +
                 "from borrowRecord join (circuBook join circuBookClass on circuBook.isbn = circuBookClass.isbn)on borrowRecord.circuBookNo = circuBook.circuBookNo "+
-                "where borrowRecord.libraryCardID = 100000";
-            //SqlParameter para = new SqlParameter("@libraryCardID", libraryCardID);
-            DataTable dataTable= SQLHelper.getDataTable(sql);
+                "where borrowRecord.libraryCardID = @libraryCardID";
+            SqlParameter para = new SqlParameter("@libraryCardID", libraryCardID);
+            DataTable dataTable= SQLHelper.getDataTable(sql,para);
             dataGridView1.DataSource =dataTable;
-            //string sql = "SELECT * FROM circuBookClass WHERE isbn = @isbn";
-            //SqlParameter para = new SqlParameter("@isbn", ISBN);
-            //SQLHelper.CoverToObject cto = new SQLHelper.CoverToObject(ReaderToCircuBookClass);
-            //var list = SQLHelper.Query(sql, cto, para);
             textBox3.Text = dataTable.Rows.Count.ToString();
             DataRow[] datarows=dataTable.Select("remainDays<0");
             int overTimeBookcount=datarows.Count();
-            textBox6.Text = overTimeBookcount.ToString();
-            // int canBorrowN=readerType.
+            //textBox6.Text = overTimeBookcount.ToString();
+            int canBorrowN = readerType.MaxBorrowNum- dataTable.Rows.Count;
+
+            int borrowCardStatusInt = 0;
+            String borrowCardStatusText="正常";
+            if (overTimeBookcount > 0) {
+                borrowCardStatusInt = 1;
+                canBorrowN = 0;
+                borrowCardStatusText="有书过期";
+            }
+            if (card.DueTime < DateTime.Now) {
+                borrowCardStatusInt = 1;
+                canBorrowN = 0;
+                borrowCardStatusText = "借阅证过期";
+            }
+            //TODO:有未缴费项
+
+            textBox8.Text = borrowCardStatusText;
+            if (borrowCardStatusInt > 0)
+            {
+                textBox8.ForeColor = Color.Red;
+
+            }
+            else {
+                textBox8.ForeColor = Color.Green;
+            }
+            textBox4.Text = canBorrowN.ToString();
 
 
         }
