@@ -24,15 +24,26 @@ namespace LibraryinfoSystem
         private void button1_Click(object sender, EventArgs e)
         {
             String libraryCardID = textBox1.Text;
-            LibraryCard card = BorrowWinAS.GetLibraryCardIdInfo(libraryCardID);
+            LibraryCard card;
+            try
+            {
+                card = BorrowWinAS.GetLibraryCardIdInfo(libraryCardID);
+              
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("借书证号不存在！");
+
+                return;
+            }
+
             textBox2.Text = card._Name;
-            
             ReaderType readerType = BorrowWinAS.GetreaderTypeInfo(card.TypeID);
             textBox5.Text = readerType.TypeName;
 
             string sql = "select  borrowRecord.circuBookNo,circuBookClass.bookName,borrowRecord.borrowDuration,borrowRecord.dateToReturn,(case  when borrowRecord.dateToReturn>GETDATE() then datediff(DAY,borrowRecord.dateToReturn,GETDATE())else -datediff(DAY,borrowRecord.dateToReturn,GETDATE())end)  as remainDays,borrowRecord.renewNum " +
                 "from borrowRecord join (circuBook join circuBookClass on circuBook.isbn = circuBookClass.isbn)on borrowRecord.circuBookNo = circuBook.circuBookNo "+
-                "where borrowRecord.libraryCardID = 1";
+                "where borrowRecord.libraryCardID = 100000";
             //SqlParameter para = new SqlParameter("@libraryCardID", libraryCardID);
             DataTable dataTable= SQLHelper.getDataTable(sql);
             dataGridView1.DataSource =dataTable;
@@ -41,6 +52,10 @@ namespace LibraryinfoSystem
             //SQLHelper.CoverToObject cto = new SQLHelper.CoverToObject(ReaderToCircuBookClass);
             //var list = SQLHelper.Query(sql, cto, para);
             textBox3.Text = dataTable.Rows.Count.ToString();
+            DataRow[] datarows=dataTable.Select("remainDays<0");
+            int overTimeBookcount=datarows.Count();
+            textBox6.Text = overTimeBookcount.ToString();
+            // int canBorrowN=readerType.
 
 
         }
