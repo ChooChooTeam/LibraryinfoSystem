@@ -8,36 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
+using Model;
 namespace LibraryinfoSystem
 {
     public partial class BorrowWin : Form
     {
-        private BorrowWinAS helper=new BorrowWinAS();
         public BorrowWin()
         {
             InitializeComponent();
         }
-
-        private void 加载子窗体ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form2 f2 = new Form2();
-            f2.MdiParent = this;
-            f2.Show();
-
-            Form3 f3 = new Form3();
-            f3.MdiParent = this;
-            f3.Show();
-
-            Form4 f4 = new Form4();
-            f4.MdiParent = this;
-            f4.Show();
-        }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             String libraryCardID = textBox1.Text;
-            
+            LibraryCard card = BorrowWinAS.GetLibraryCardIdInfo(libraryCardID);
+            textBox2.Text = card._Name;
 
+            Reader reader = BorrowWinAS.GetreaderInfo(libraryCardID);
+            ReaderType readerType = BorrowWinAS.GetreaderTypeInfo(reader.TypeID);
+            textBox5.Text = readerType.TypeName;
+
+            //string sql = "SELECT * FROM circuBookClass";
+            //dgvBook.DataSource = SQLHelper.getDataTable(sql);
+             
         }
     }
 }

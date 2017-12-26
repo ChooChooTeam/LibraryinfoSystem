@@ -43,6 +43,12 @@ INSERT INTO circuBook(libaryID,isbn) VALUES (1,'9787121155352')
 INSERT INTO circuBook(libaryID,isbn) VALUES (2,'9787121155352')
 INSERT INTO circuBook(libaryID,isbn) VALUES (1,'9780387202488')
 
+--¶ÁÊé¿¨
+INSERT INTO libraryCard(name,regTime,dueTime) VALUES ('liren','2017/7/7','2019/9/9')
+INSERT INTO libraryCard(name,regTime,dueTime) VALUES ('qq','2017/7/7','2019/9/9')
+INSERT INTO libraryCard(name,regTime,dueTime) VALUES ('liuzheng','2017/7/7','2019/9/9')
+
+
 -- ¶ÁÕß
 INSERT INTO reader(ID,libraryCardID,typeID,sex) VALUES ('431012199601012831',null,1,'ÄÐ')
 INSERT INTO reader(ID,libraryCardID,typeID,sex) VALUES ('431012199601012832',null,2,'ÄÐ')
