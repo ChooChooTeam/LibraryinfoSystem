@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Model;
+using BLL;
 namespace LibraryinfoSystem
 {
     public partial class ReturnWin : Form
@@ -31,10 +32,12 @@ namespace LibraryinfoSystem
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (this.textBox1.Text.Length == 5)
+            if (this.textBox1.Text.Length == 10)
             {
-                this.textBox2.Text = "数据库";
-                this.textBox3.Text = "机械工业出版社";
+                CircuBookClass cBookc = BLL.RetrunWinAS.montorTextBox1Changed(this.textBox1.Text);
+                this.textBox2.Text = cBookc.BookName;
+                this.textBox3.Text = cBookc.PublishingHouse;
+                
             }
         }
 
