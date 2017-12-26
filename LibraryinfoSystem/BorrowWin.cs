@@ -157,5 +157,13 @@ namespace LibraryinfoSystem
                 }
             }
         }
+
+        private void textBox9_TextChanged_1(object sender, EventArgs e)
+        {
+            if (this.textBox9.Text.Length == 10)
+            {
+                //查书名和出版社
+            }
+        }
     }
 }

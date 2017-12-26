@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -119,9 +119,9 @@
             // Column1
             // 
             this.Column1.DataPropertyName = "circuBookNo";
-            dataGridViewCellStyle21.Format = "D12";
-            dataGridViewCellStyle21.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle23.Format = "D12";
+            dataGridViewCellStyle23.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle23;
             this.Column1.HeaderText = "索书号";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -297,10 +297,11 @@
             // textBox9
             // 
             this.textBox9.Location = new System.Drawing.Point(139, 186);
-            this.textBox9.MaxLength = 15;
+            this.textBox9.MaxLength = 10;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(90, 28);
             this.textBox9.TabIndex = 25;
+            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged_1);
             this.textBox9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox9_KeyPress);
             // 
             // label12
