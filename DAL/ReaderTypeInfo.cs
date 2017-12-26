@@ -30,7 +30,7 @@ namespace DAL
         {
             int typeID = ReaderType.GetInt16(ReaderType.GetOrdinal("typeID"));
             string typeName = ReaderType.GetString(ReaderType.GetOrdinal("typeName"));
-            int borrowDuration = ReaderType.GetInt32(ReaderType.GetOrdinal("borrowDuration"));
+            DateTime borrowDuration = ReaderType.GetDateTime(ReaderType.GetOrdinal("borrowDuration"));
             int reBorrowNum = ReaderType.GetInt16(ReaderType.GetOrdinal("reBorrowNum"));
             return new ReaderType(typeID, typeName, borrowDuration, reBorrowNum);
         }
