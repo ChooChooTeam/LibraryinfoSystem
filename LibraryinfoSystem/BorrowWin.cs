@@ -18,7 +18,6 @@ namespace LibraryinfoSystem
             InitializeComponent();
         }
         
-
         private void button1_Click(object sender, EventArgs e)
         {
             String libraryCardID = textBox1.Text;
@@ -28,29 +27,10 @@ namespace LibraryinfoSystem
             Reader reader = BorrowWinAS.GetreaderInfo(libraryCardID);
             ReaderType readerType = BorrowWinAS.GetreaderTypeInfo(reader.TypeID);
             textBox5.Text = readerType.TypeName;
-            
 
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-            if (this.Owner != null)
-            {
-                MainWin mainw = (MainWin)this.Owner;
-                mainw.Show();
-            }
-            this.Close();
-        }
-
-        private void BorrowWin_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (this.Owner != null)
-            {
-                MainWin mainw = (MainWin)this.Owner;
-                mainw.Show();
-            }
+            //string sql = "SELECT * FROM circuBookClass";
+            //dgvBook.DataSource = SQLHelper.getDataTable(sql);
+             
         }
     }
 }
