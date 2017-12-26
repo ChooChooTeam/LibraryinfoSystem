@@ -28,5 +28,10 @@ namespace LibraryinfoSystem
             var book = DAL.BookInfo.queryBookInfo("9780387202488");
             MessageBox.Show(book.BookName);
         }
+
+        private void bthExample_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("欢迎欢迎");
+        }
     }
 }

@@ -31,25 +31,5 @@ namespace LibraryinfoSystem
             f4.MdiParent = this;
             f4.Show();
         }
-
-        private void 水平平铺ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void 垂直平铺ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void 层叠平铺ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
     }
 }
