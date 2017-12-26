@@ -17,11 +17,6 @@ namespace Utility
         public delegate List<object> CoverToList(SqlDataReader reader);
        
 
-        public static List<object> testDB()
-        {
-           return Query("SELECT * FROM circuBookClass", (reader) => { return reader["bookName"]; });
-        }
-
         /// <summary>
         /// 连接数据库并执行一条查询指令,返回查询数据的列表
         /// </summary>
@@ -86,7 +81,33 @@ namespace Utility
             return list;
         }
 
+        /// <summary>
+        /// 获取数据表
+        /// </summary>
+        /// <param name="sql">查询的SQL语句</param>
+        /// <param name="para">SQL语句中使用的参数</param>
+        /// <returns>包含查询数据的DataTable</returns>
+        /// 
+        public static DataTable getDataTable(string sql, params SqlParameter[] para)
+        {
+            using (SqlConnection conn = new SqlConnection(sqlInfo))
+            {
+                DataSet ds = new DataSet();
+                SqlCommand cmd = new SqlCommand(sql, conn);
 
+                if(para.Length != 0)
+                {
+                    cmd.Parameters.Add(para);
+                }
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(ds);
+
+                return ds.Tables[0];
+            }
+
+
+        }
 
     }
 }
