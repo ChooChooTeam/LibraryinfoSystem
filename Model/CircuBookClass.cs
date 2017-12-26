@@ -8,17 +8,24 @@ namespace Model
 {
     public class CircuBookClass
     {
-        public CircuBookClass(string ISBN,string bookName,string mainAuthor,string otherAuthor,DateTime publicationYear,string CDName,decimal price,int bookNum)
+        public CircuBookClass(string ISBN,string bookName,string mainAuthor,string otherAuthor,DateTime publicationYear,string publishingHouse,decimal price,int bookNum)
         {
             _ISBN = ISBN;
             _bookName = bookName;
             _mainAuthor = mainAuthor;
             _otherAuthor = otherAuthor;
             _publicationYear = publicationYear;
-            _CDName = CDName;
+            _publishingHouse = publishingHouse;
             _price = price;
             _bookNum = bookNum;
         }
+
+        public CircuBookClass(string bookName, string publishingHouse)
+        {
+            this._bookName = bookName;
+            this._publishingHouse = publishingHouse;
+        }
+
         private string _ISBN;
         public string ISBN
         {
@@ -64,12 +71,12 @@ namespace Model
             }
         }
 
-        private string _CDName;
-        public string CDName
+        private string _publishingHouse;
+        public string PublishingHouse
         {
             get
             {
-                return _CDName;
+                return _publishingHouse;
             }
         }
 
@@ -83,6 +90,9 @@ namespace Model
         }
 
         private int _bookNum;
+        private string bookName;
+        private string publishingHouse;
+
         public int BookNum
         {
             get
