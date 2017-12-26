@@ -70,11 +70,11 @@ namespace LibraryinfoSystem
             textBox8.Text = borrowCardStatusText;
             if (borrowCardStatusInt > 0)
             {
-                textBox8.ForeColor = Color.Red;
+                textBox8.BackColor = Color.Red;
 
             }
             else {
-                textBox8.ForeColor = Color.Green;
+                textBox8.BackColor = Color.Green;
             }
             textBox4.Text = canBorrowN.ToString();
 
@@ -120,6 +120,16 @@ namespace LibraryinfoSystem
             {
                 label14.Text = "label数据";
             }
+        }
+
+        private void textBox9_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            
         }
     }
 }

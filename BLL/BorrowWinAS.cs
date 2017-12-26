@@ -29,5 +29,9 @@ namespace BLL
                 return readerType;
 
         }
+        //  public static CircuBookClass GetCircuBookInfo(String circuBookNo) {
+        //     CircuBookClass book = BookInfo.queryBookInfo(circuBookNo);
+        // }
+       
     }
 }
