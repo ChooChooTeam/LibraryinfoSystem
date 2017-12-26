@@ -37,5 +37,24 @@ namespace LibraryinfoSystem
                 this.textBox3.Text = "机械工业出版社";
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                MainWin mainw = (MainWin)this.Owner;
+                mainw.Show();
+            }
+            this.Close();
+        }
+
+        private void ReturnWin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                MainWin mainw = (MainWin)this.Owner;
+                mainw.Show();
+            }
+        }
     }
 }

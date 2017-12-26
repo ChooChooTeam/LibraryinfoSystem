@@ -49,5 +49,24 @@ namespace LibraryinfoSystem
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                MainWin mainw = (MainWin)this.Owner;
+                mainw.Show();
+            }
+            this.Close();
+        }
+
+        private void BorrowWin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                MainWin mainw = (MainWin)this.Owner;
+                mainw.Show();
+            }
+        }
     }
 }
