@@ -26,15 +26,32 @@ namespace DAL
             return list;
         }
 
+        public static DamageReason queryReasonByIndex(string index)
+        {
+            string sql = "SELECT * FROM damageReason WHERE damageReasonIndex = @index";
+            SqlParameter param = new SqlParameter("@index", index);
+            SQLHelper.CoverToObject cto = new SQLHelper.CoverToObject(ReaderToDamageReason);
+
+            return SQLHelper.Query(sql, cto, param)[0] as DamageReason;
+        }
+
+        public static DamageReason queryReasonByIndex(int index)
+        {
+            return queryReasonByIndex(index.ToString());
+        }
+
+
         public static DamageReason ReaderToDamageReason(SqlDataReader reader)
         {
             // 注意
-            int index = reader.GetInt16(reader.GetOrdinal("damgeReasonIndex"));
+            int index = reader.GetInt16(reader.GetOrdinal("damageReasonIndex"));
             string damageExplain = reader.GetString(reader.GetOrdinal("damageExplain"));
 
             return new DamageReason(index, damageExplain);
 
         }
+
+        
 
 
     }

@@ -104,5 +104,22 @@ namespace LibraryinfoSystem
                 mainw.Show();
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void BorrowWin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+            if (this.textBox9.Text.Length == 5)
+            {
+                label14.Text = "label数据";
+            }
+        }
     }
 }
