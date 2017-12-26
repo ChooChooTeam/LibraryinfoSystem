@@ -22,6 +22,21 @@ namespace DAL
             return cBookc;   
         }
 
+        public static List<object> queryABookInfo(string circuBookNo)
+        {
+            // 注意连接字符串之间的空格
+            string sql = "SELECT circuBook.isbn,bookName" + 
+                " FROM circuBook JOIN circuBookClass ON (circuBook.isbn = circuBookClass.isbn)"+
+                " WHERE circuBookNo = @cNo";
+            SqlParameter para = new SqlParameter("@cNo", circuBookNo);
+
+            SQLHelper.CoverToList ctl = new SQLHelper.CoverToList(ReaderToBookInfo);
+
+            var list = SQLHelper.Query(sql, ctl, para);
+            
+            return list[0];
+        }
+
 
         private static CircuBookClass ReaderToCircuBookClass(SqlDataReader reader)
         {
@@ -34,6 +49,18 @@ namespace DAL
             decimal price = reader.GetDecimal(reader.GetOrdinal("price"));
             int bookNum = reader.GetInt16(reader.GetOrdinal("bookNum"));
             return new CircuBookClass(isbn, bookName, mainAuthor, otherAuthor, publicationYear, null, price, bookNum);
+        }
+
+        private static List<object> ReaderToBookInfo(SqlDataReader reader)
+        {
+            string isbn = reader.GetString(reader.GetOrdinal("isbn"));
+            string bookName = reader.GetString(reader.GetOrdinal("bookName"));
+
+            List<object> list = new List<object>();
+            list.Add(isbn);
+            list.Add(bookName);
+
+            return list;
         }
     }
 }
