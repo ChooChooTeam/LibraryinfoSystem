@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2017/12/26 17:46:46                          */
+/* Created on:     2017/12/26 20:22:02                          */
 /*==============================================================*/
 
 
@@ -312,9 +312,9 @@ go
 /* Table: damageReason                                          */
 /*==============================================================*/
 create table damageReason (
-   damgeReasonIndex     smallint             identity,
+   damageReasonIndex    smallint             identity,
    damageExplain        text                 not null,
-   constraint PK_DAMAGEREASON primary key nonclustered (damgeReasonIndex)
+   constraint PK_DAMAGEREASON primary key nonclustered (damageReasonIndex)
 )
 go
 
@@ -323,7 +323,7 @@ go
 /*==============================================================*/
 create table damageRecord (
    damageIndex          int                  identity,
-   damgeReasonIndex     smallint             not null,
+   damageReasonIndex    smallint             not null,
    libraryCardID        int                  not null,
    circuBookNo          int                  not null,
    damageTime           datetime             not null,
@@ -354,7 +354,7 @@ go
 /* Index: Relationship_7_FK                                     */
 /*==============================================================*/
 create index Relationship_7_FK on damageRecord (
-damgeReasonIndex ASC
+damageReasonIndex ASC
 )
 go
 
@@ -400,6 +400,7 @@ create table readerType (
    typeName             char(20)             not null,
    borrowDuration       datetime             not null,
    reBorrowNum          smallint             not null,
+   maxBorrowNum         smallint             not null,
    constraint PK_READERTYPE primary key nonclustered (typeID)
 )
 go
@@ -478,8 +479,8 @@ alter table damageRecord
 go
 
 alter table damageRecord
-   add constraint FK_DAMAGERE_RELATIONS_DAMAGERE foreign key (damgeReasonIndex)
-      references damageReason (damgeReasonIndex)
+   add constraint FK_DAMAGERE_RELATIONS_DAMAGERE foreign key (damageReasonIndex)
+      references damageReason (damageReasonIndex)
 go
 
 alter table libraryCard
