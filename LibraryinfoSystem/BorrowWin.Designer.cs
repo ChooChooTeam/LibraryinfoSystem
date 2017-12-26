@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -62,7 +63,7 @@
             this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(58, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 20);
+            this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "借阅证号";
             // 
@@ -70,7 +71,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(158, 36);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(178, 28);
+            this.textBox1.Size = new System.Drawing.Size(178, 24);
             this.textBox1.TabIndex = 1;
             // 
             // button1
@@ -99,13 +100,14 @@
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(762, 315);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(62, 223);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 19);
+            this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "已借书籍";
             // 
@@ -114,7 +116,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(62, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 19);
+            this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "读者信息";
             // 
@@ -122,7 +124,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(161, 118);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(90, 28);
+            this.textBox2.Size = new System.Drawing.Size(90, 24);
             this.textBox2.TabIndex = 6;
             // 
             // label4
@@ -130,7 +132,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(100, 121);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 19);
+            this.label4.Size = new System.Drawing.Size(37, 15);
             this.label4.TabIndex = 7;
             this.label4.Text = "姓名";
             // 
@@ -139,7 +141,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(292, 121);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 19);
+            this.label5.Size = new System.Drawing.Size(37, 15);
             this.label5.TabIndex = 8;
             this.label5.Text = "身份";
             // 
@@ -148,7 +150,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(474, 121);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 19);
+            this.label6.Size = new System.Drawing.Size(67, 15);
             this.label6.TabIndex = 10;
             this.label6.Text = "已借书籍";
             // 
@@ -157,7 +159,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(658, 121);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 19);
+            this.label7.Size = new System.Drawing.Size(67, 15);
             this.label7.TabIndex = 11;
             this.label7.Text = "超期书籍";
             // 
@@ -166,7 +168,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(65, 160);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 19);
+            this.label8.Size = new System.Drawing.Size(67, 15);
             this.label8.TabIndex = 12;
             this.label8.Text = "可借本书";
             // 
@@ -174,7 +176,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(161, 157);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(90, 28);
+            this.textBox4.Size = new System.Drawing.Size(90, 24);
             this.textBox4.TabIndex = 13;
             // 
             // button3
@@ -190,28 +192,28 @@
             // 
             this.textBox5.Location = new System.Drawing.Point(350, 117);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(90, 28);
+            this.textBox5.Size = new System.Drawing.Size(90, 24);
             this.textBox5.TabIndex = 16;
             // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(562, 117);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(65, 28);
+            this.textBox3.Size = new System.Drawing.Size(65, 24);
             this.textBox3.TabIndex = 17;
             // 
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(749, 118);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(65, 28);
+            this.textBox6.Size = new System.Drawing.Size(65, 24);
             this.textBox6.TabIndex = 18;
             // 
             // textBox7
             // 
             this.textBox7.Location = new System.Drawing.Point(378, 160);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(90, 28);
+            this.textBox7.Size = new System.Drawing.Size(90, 24);
             this.textBox7.TabIndex = 20;
             // 
             // label9
@@ -219,13 +221,16 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(268, 166);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 19);
+            this.label9.Size = new System.Drawing.Size(82, 15);
             this.label9.TabIndex = 19;
             this.label9.Text = "借书证状态";
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "circuBookNo";
+            dataGridViewCellStyle1.Format = "D12";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column1.HeaderText = "索书号";
             this.Column1.Name = "Column1";
             // 
@@ -261,7 +266,7 @@
             // 
             // BorrowWin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 639);
             this.Controls.Add(this.textBox7);
@@ -313,13 +318,13 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Label label9;
     }
 }
