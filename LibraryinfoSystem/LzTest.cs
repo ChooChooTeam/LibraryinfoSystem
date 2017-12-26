@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utility;
+using Model;
 namespace LibraryinfoSystem
 {
     public partial class LzTest : Form
@@ -38,6 +39,12 @@ namespace LibraryinfoSystem
         private void dgvBook_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CircuBookClass cBookc = DAL.BookInfo.queryBookInfo("1");
+            MessageBox.Show(cBookc.BookName + cBookc.PublishingHouse);
         }
     }
 }

@@ -166,7 +166,7 @@
             this.Controls.Add(this.button1);
             this.Name = "PayForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PayForm";
+            this.Text = "缴费服务";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PayForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
