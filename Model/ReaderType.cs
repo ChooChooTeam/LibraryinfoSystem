@@ -9,7 +9,7 @@ namespace Model
     
     public class ReaderType
     {
-        ReaderType(int typeID,string typeName,int borrowDuration,int borrowNum)
+        public ReaderType(int typeID,string typeName,int borrowDuration,int borrowNum)
         {
             _typeID = typeID;
             _typeName = typeName;

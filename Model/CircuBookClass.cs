@@ -8,7 +8,7 @@ namespace Model
 {
     public class CircuBookClass
     {
-        CircuBookClass(string ISBN,string bookName,string mainAuthor,string otherAuthor,DateTime publicationYear,string CDName,decimal price,int bookNum)
+        public CircuBookClass(string ISBN,string bookName,string mainAuthor,string otherAuthor,DateTime publicationYear,string CDName,decimal price,int bookNum)
         {
             _ISBN = ISBN;
             _bookName = bookName;

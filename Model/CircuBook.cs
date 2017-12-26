@@ -8,7 +8,7 @@ namespace Model
 {
     public class CircuBook
     {
-        CircuBook(int circuBookNo,int libraryID,string ISBN)
+        public CircuBook(int circuBookNo,int libraryID,string ISBN)
         {
             _circuBookNo = circuBookNo;
             _libraryID = libraryID;

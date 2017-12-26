@@ -8,7 +8,7 @@ namespace Model
 {
     public class DamageRecord
     {
-        DamageRecord(int damageIndex,int damageReasonIndex,int libraryID,int circuBookNo,DateTime damageTime,decimal damageMoney,string damageRemark)
+        public DamageRecord(int damageIndex,int damageReasonIndex,int libraryID,int circuBookNo,DateTime damageTime,decimal damageMoney,string damageRemark)
         {
             _damageIndex = damageIndex;
             _damageReasonIndex = damageReasonIndex;

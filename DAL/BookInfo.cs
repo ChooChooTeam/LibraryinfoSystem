@@ -25,7 +25,15 @@ namespace DAL
 
         private static CircuBookClass ReaderToCircuBookClass(SqlDataReader reader)
         {
-            return new CircuBookClass();
+            string isbn = reader.GetString(reader.GetOrdinal("isbn"));
+            string bookName = reader.GetString(reader.GetOrdinal("bookName"));
+            string mainAuthor = reader.GetString(reader.GetOrdinal("mainAuthor"));
+            string otherAuthor = reader.GetString(reader.GetOrdinal("otherAuthor"));
+            DateTime publicationYear = reader.GetDateTime(reader.GetOrdinal("publicationYear"));
+            //string CDName = reader.GetString(reader.GetOrdinal("CDName"));
+            decimal price = reader.GetDecimal(reader.GetOrdinal("price"));
+            int bookNum = reader.GetInt16(reader.GetOrdinal("bookNum"));
+            return new CircuBookClass(isbn, bookName, mainAuthor, otherAuthor, publicationYear, null, price, bookNum);
         }
     }
 }

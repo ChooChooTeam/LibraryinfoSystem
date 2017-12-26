@@ -8,7 +8,7 @@ namespace Model
 {
     public class Reader
     {
-        Reader(string ID,int libraryCardID,int typeID,string sex)
+        public Reader(string ID,int libraryCardID,int typeID,string sex)
         {
             _ID = ID;
             _libraryCardID = libraryCardID;

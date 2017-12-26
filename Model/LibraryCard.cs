@@ -8,7 +8,7 @@ namespace Model
 {
     public class LibraryCard
     {
-        LibraryCard(int libraryCardID,string name,DateTime regTime,DateTime dueTime)
+        public LibraryCard(int libraryCardID,string name,DateTime regTime,DateTime dueTime)
         {
             _libraryCardID = libraryCardID;
             _name = name;

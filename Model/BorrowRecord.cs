@@ -8,7 +8,7 @@ namespace Model
 {
     public class BorrowRecord
     {
-        BorrowRecord(int borrowIndex,int libraryCardID,int circuBookNo,int borrowDuration,DateTime returnTime,DateTime dateToReturn,int reNewNum)
+        public BorrowRecord(int borrowIndex,int libraryCardID,int circuBookNo,int borrowDuration,DateTime returnTime,DateTime dateToReturn,int reNewNum)
         {
             _borrowIndex = borrowIndex;
             _libraryCardID = libraryCardID;
