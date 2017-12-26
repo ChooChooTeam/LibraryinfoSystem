@@ -20,14 +20,14 @@ INSERT INTO library(libaryID,libraryName,libraryLocation) VALUES (3,'东院图书馆'
 
 
 -- 流通书籍类
-INSERT INTO circuBookClass(isbn,bookName,mainAuthor,otherAuthor,publicationYear,CDName,price,bookNum)
-VALUES ('9787040406641','数据库系统概论(第五版)','王珊','萨师煊','2014/9/1',null,39.6,5);
-INSERT INTO circuBookClass(isbn,bookName,mainAuthor,otherAuthor,publicationYear,CDName,price,bookNum)
-VALUES ('9787302330981','软件工程导论(第六版)','张海潘','牟永敏','2013/8/1',null,39.5,3);
-INSERT INTO circuBookClass(isbn,bookName,mainAuthor,otherAuthor,publicationYear,CDName,price,bookNum)
-VALUES ('9787121155352','C++ Primer(第五版)','Stanley','Josee Lajoie, Barbara E. Moo','2013/9/1',null,128.00,2);
-INSERT INTO circuBookClass(isbn,bookName,mainAuthor,otherAuthor,publicationYear,CDName,price,bookNum)
-VALUES ('9780387202488','PARSING TECHNIQUES A Practical Guide','Dick Grune','Geriel J.H. Jacobs','2074/9/1',null,1250,1);
+INSERT INTO circuBookClass(isbn,bookName,mainAuthor,otherAuthor,publicationYear,publishingHouse,price,bookNum)
+VALUES ('9787040406641','数据库系统概论(第五版)','王珊','萨师煊','2014/9/1','高等教育出版社',39.6,5);
+INSERT INTO circuBookClass(isbn,bookName,mainAuthor,otherAuthor,publicationYear,publishingHouse,price,bookNum)
+VALUES ('9787302330981','软件工程导论(第六版)','张海潘','牟永敏','2013/8/1','清华大学出版社',39.5,3);
+INSERT INTO circuBookClass(isbn,bookName,mainAuthor,otherAuthor,publicationYear,publishingHouse,price,bookNum)
+VALUES ('9787121155352','C++ Primer(第五版)','Stanley','Josee Lajoie, Barbara E. Moo','2013/9/1','电子工业出版社',128.00,2);
+INSERT INTO circuBookClass(isbn,bookName,mainAuthor,otherAuthor,publicationYear,publishingHouse,price,bookNum)
+VALUES ('9780387202488','PARSING TECHNIQUES A Practical Guide','Dick Grune','Geriel J.H. Jacobs','2074/9/1','Springer Science',1250,1);
 
 -- 实际流通书籍
 
@@ -44,18 +44,16 @@ INSERT INTO circuBook(libaryID,isbn) VALUES (2,'9787121155352')
 INSERT INTO circuBook(libaryID,isbn) VALUES (1,'9780387202488')
 
 --读书卡
-INSERT INTO libraryCard(name,regTime,dueTime) VALUES ('liren','2017/7/7','2019/9/9')
-INSERT INTO libraryCard(name,regTime,dueTime) VALUES ('qq','2017/7/7','2019/9/9')
-INSERT INTO libraryCard(name,regTime,dueTime) VALUES ('liuzheng','2017/7/7','2019/9/9')
+INSERT INTO libraryCard(typeID,name,sex,ID,regTime,dueTime) VALUES (1,'李韧','男','431012199601012831','2017/7/7','2019/9/9')
+INSERT INTO libraryCard(typeID,name,sex,ID,regTime,dueTime) VALUES (1,'李慧庆','男','431012199601012832','2017/7/7','2019/9/9')
+INSERT INTO libraryCard(typeID,name,sex,ID,regTime,dueTime) VALUES (1,'边洪佳','男','431012199601012833','2017/7/7','2019/9/9')
+INSERT INTO libraryCard(typeID,name,sex,ID,regTime,dueTime) VALUES (1,'李大壮','男','431012199601012834','2015/2/7','2035/9/1')
+INSERT INTO libraryCard(typeID,name,sex,ID,regTime,dueTime) VALUES (2,'张春花','女','431012199601012835','2017/2/9','2020/9/1')
+INSERT INTO libraryCard(typeID,name,sex,ID,regTime,dueTime) VALUES (3,'陈小','女','431012199601012836','2010/1/1','2035/9/1')
 
 
--- 读者
-INSERT INTO reader(ID,libraryCardID,typeID,sex) VALUES ('431012199601012831',null,1,'男')
-INSERT INTO reader(ID,libraryCardID,typeID,sex) VALUES ('431012199601012832',null,2,'男')
-INSERT INTO reader(ID,libraryCardID,typeID,sex) VALUES ('431012199601012833',null,3,'男')
-INSERT INTO reader(ID,libraryCardID,typeID,sex) VALUES ('431012199601012834',null,1,'女')
-INSERT INTO reader(ID,libraryCardID,typeID,sex) VALUES ('431012199601012835',null,2,'女')
-INSERT INTO reader(ID,libraryCardID,typeID,sex) VALUES ('431012199601012836',null,3,'女')
+
+
 
 
 
