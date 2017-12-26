@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -77,14 +77,17 @@
             // 
             // textBox1
             // 
+            this.textBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox1.Location = new System.Drawing.Point(139, 40);
+            this.textBox1.MaxLength = 6;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(178, 28);
+            this.textBox1.Size = new System.Drawing.Size(90, 30);
             this.textBox1.TabIndex = 1;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(333, 39);
+            this.button1.Location = new System.Drawing.Point(274, 39);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(82, 30);
             this.button1.TabIndex = 2;
@@ -116,9 +119,9 @@
             // Column1
             // 
             this.Column1.DataPropertyName = "circuBookNo";
-            dataGridViewCellStyle11.Format = "D12";
-            dataGridViewCellStyle11.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle21.Format = "D12";
+            dataGridViewCellStyle21.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle21;
             this.Column1.HeaderText = "索书号";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -232,7 +235,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(333, 182);
+            this.button3.Location = new System.Drawing.Point(274, 182);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 32);
             this.button3.TabIndex = 15;
@@ -285,18 +288,20 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(66, 186);
+            this.label11.Location = new System.Drawing.Point(37, 189);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(66, 19);
+            this.label11.Size = new System.Drawing.Size(104, 19);
             this.label11.TabIndex = 24;
-            this.label11.Text = "索书号";
+            this.label11.Text = "图书标识号";
             // 
             // textBox9
             // 
             this.textBox9.Location = new System.Drawing.Point(139, 186);
+            this.textBox9.MaxLength = 15;
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(178, 28);
+            this.textBox9.Size = new System.Drawing.Size(90, 28);
             this.textBox9.TabIndex = 25;
+            this.textBox9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox9_KeyPress);
             // 
             // label12
             // 

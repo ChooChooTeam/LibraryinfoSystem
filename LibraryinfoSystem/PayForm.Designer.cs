@@ -34,13 +34,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(404, 62);
+            this.button2.Location = new System.Drawing.Point(329, 62);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(82, 32);
             this.button2.TabIndex = 5;
@@ -65,9 +65,10 @@
             // 
             // textBox1
             // 
+            this.textBox1.Font = new System.Drawing.Font("宋体", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox1.Location = new System.Drawing.Point(195, 64);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(178, 25);
+            this.textBox1.Size = new System.Drawing.Size(100, 27);
             this.textBox1.TabIndex = 4;
             // 
             // label1
@@ -104,26 +105,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(581, 206);
             this.dataGridView1.TabIndex = 7;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "欠费原因";
-            this.Column1.Name = "Column1";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "书名";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "钱数";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "日期";
-            this.Column5.Name = "Column5";
-            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(294, 405);
@@ -145,10 +126,35 @@
             // 
             // textBox2
             // 
+            this.textBox2.Font = new System.Drawing.Font("宋体", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox2.Location = new System.Drawing.Point(195, 102);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 25);
+            this.textBox2.Size = new System.Drawing.Size(100, 27);
             this.textBox2.TabIndex = 10;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "damageExplain";
+            this.Column1.HeaderText = "欠费原因";
+            this.Column1.Name = "Column1";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "bookName";
+            this.Column3.HeaderText = "书名";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "damageMoney";
+            this.Column4.HeaderText = "钱数";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "damageTime";
+            this.Column5.HeaderText = "日期";
+            this.Column5.Name = "Column5";
             // 
             // PayForm
             // 
@@ -182,12 +188,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
     }
 }
