@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -62,6 +62,7 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,9 +117,9 @@
             // Column1
             // 
             this.Column1.DataPropertyName = "circuBookNo";
-            dataGridViewCellStyle5.Format = "D12";
-            dataGridViewCellStyle5.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Format = "D12";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column1.HeaderText = "索书号";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -180,6 +181,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(142, 104);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(90, 28);
             this.textBox2.TabIndex = 6;
             // 
@@ -226,12 +228,13 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(85, 19);
             this.label8.TabIndex = 12;
-            this.label8.Text = "可借本书";
+            this.label8.Text = "可借本数";
             // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(142, 143);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(90, 28);
             this.textBox4.TabIndex = 13;
             // 
@@ -248,6 +251,7 @@
             // 
             this.textBox5.Location = new System.Drawing.Point(331, 103);
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(90, 28);
             this.textBox5.TabIndex = 16;
             // 
@@ -255,6 +259,7 @@
             // 
             this.textBox3.Location = new System.Drawing.Point(543, 103);
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(65, 28);
             this.textBox3.TabIndex = 17;
             // 
@@ -262,6 +267,7 @@
             // 
             this.textBox6.Location = new System.Drawing.Point(730, 104);
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(65, 28);
             this.textBox6.TabIndex = 18;
             // 
@@ -288,6 +294,7 @@
             // 
             this.textBox8.Location = new System.Drawing.Point(383, 142);
             this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(100, 28);
             this.textBox8.TabIndex = 23;
             // 
@@ -306,6 +313,7 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(178, 28);
             this.textBox9.TabIndex = 25;
+            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // label12
             // 
@@ -341,11 +349,20 @@
             this.textBox10.Size = new System.Drawing.Size(178, 28);
             this.textBox10.TabIndex = 29;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(675, 245);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(0, 19);
+            this.label14.TabIndex = 30;
+            // 
             // BorrowWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 639);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBox11);
@@ -378,6 +395,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "借书服务";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BorrowWin_FormClosing);
+            this.Load += new System.EventHandler(this.BorrowWin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -420,5 +438,6 @@
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label14;
     }
 }
