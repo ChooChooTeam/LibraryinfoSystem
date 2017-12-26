@@ -97,7 +97,7 @@ namespace Utility
 
                 if(para.Length != 0)
                 {
-                    cmd.Parameters.Add(para);
+                    cmd.Parameters.AddRange(para);
                 }
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
