@@ -30,10 +30,9 @@ namespace LibraryinfoSystem
             dgvBook.DataSource = SQLHelper.getDataTable(sql);
 
             var list = DAL.DamageInfo.getAllReason();
-            foreach(var i in list)
-            {
-                MessageBox.Show(i.DamageReasonIndex.ToString() + i.DamageExplain.ToString());
-            }
+            MessageBox.Show(DAL.DamageInfo.queryReasonByIndex(2).DamageExplain);
+
+
         }
 
         private void dgvBook_CellContentClick(object sender, DataGridViewCellEventArgs e)
