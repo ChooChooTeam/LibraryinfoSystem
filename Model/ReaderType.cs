@@ -9,7 +9,7 @@ namespace Model
     
     public class ReaderType
     {
-        public ReaderType(int typeID,string typeName,int borrowDuration,int borrowNum)
+        public ReaderType(int typeID,string typeName, DateTime borrowDuration,int borrowNum)
         {
             _typeID = typeID;
             _typeName = typeName;
@@ -34,8 +34,8 @@ namespace Model
             }
         }
 
-        private int _borrowDuration;
-        public int BorrowDuration
+        private DateTime _borrowDuration;
+        public DateTime BorrowDuration
         {
             get
             {

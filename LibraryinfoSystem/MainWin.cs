@@ -20,7 +20,8 @@ namespace LibraryinfoSystem
         private void button1_Click(object sender, EventArgs e)
         {
             BorrowWin bw = new BorrowWin();
-            bw.Show();
+            bw.Show(this);
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -40,7 +41,20 @@ namespace LibraryinfoSystem
         private void bthExample_Click(object sender, EventArgs e)
         {
             ReturnWin returnW = new ReturnWin();
-            returnW.Show();
+            returnW.Show(this);
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PayForm pf = new PayForm();
+            pf.Show(this);
+            this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

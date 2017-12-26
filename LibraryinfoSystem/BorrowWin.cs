@@ -26,25 +26,47 @@ namespace LibraryinfoSystem
             String libraryCardID = textBox1.Text;
             LibraryCard card = BorrowWinAS.GetLibraryCardIdInfo(libraryCardID);
             textBox2.Text = card._Name;
-
-            Reader reader = BorrowWinAS.GetreaderInfo(libraryCardID);
-            ReaderType readerType = BorrowWinAS.GetreaderTypeInfo(reader.TypeID);
+            
+            ReaderType readerType = BorrowWinAS.GetreaderTypeInfo(card.TypeID);
             textBox5.Text = readerType.TypeName;
 
             string sql = "select  borrowRecord.circuBookNo,circuBookClass.bookName,borrowRecord.borrowDuration,borrowRecord.dateToReturn,(case  when borrowRecord.dateToReturn>GETDATE() then datediff(DAY,borrowRecord.dateToReturn,GETDATE())else -datediff(DAY,borrowRecord.dateToReturn,GETDATE())end)  as remainDays,borrowRecord.renewNum " +
                 "from borrowRecord join (circuBook join circuBookClass on circuBook.isbn = circuBookClass.isbn)on borrowRecord.circuBookNo = circuBook.circuBookNo "+
                 "where borrowRecord.libraryCardID = 1";
             //SqlParameter para = new SqlParameter("@libraryCardID", libraryCardID);
-            dataGridView1.DataSource = SQLHelper.getDataTable(sql);
+            DataTable dataTable= SQLHelper.getDataTable(sql);
+            dataGridView1.DataSource =dataTable;
             //string sql = "SELECT * FROM circuBookClass WHERE isbn = @isbn";
             //SqlParameter para = new SqlParameter("@isbn", ISBN);
             //SQLHelper.CoverToObject cto = new SQLHelper.CoverToObject(ReaderToCircuBookClass);
             //var list = SQLHelper.Query(sql, cto, para);
+            textBox3.Text = dataTable.Rows.Count.ToString();
+
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                MainWin mainw = (MainWin)this.Owner;
+                mainw.Show();
+            }
+            this.Close();
+        }
+
+        private void BorrowWin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                MainWin mainw = (MainWin)this.Owner;
+                mainw.Show();
+            }
         }
     }
 }

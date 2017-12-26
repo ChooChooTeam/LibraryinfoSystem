@@ -27,10 +27,13 @@ namespace DAL
         private static LibraryCard ReaderToBorrowRecordClass(SqlDataReader reader)
         {
             int libraryCardID = reader.GetInt32(reader.GetOrdinal("libraryCardID"));
+            int typeID = reader.GetInt16(reader.GetOrdinal("typeID"));
             string name = reader.GetString(reader.GetOrdinal("name"));
+            string sex = reader.GetString(reader.GetOrdinal("sex"));
+            string ID = reader.GetString(reader.GetOrdinal("ID"));
             DateTime regTime = reader.GetDateTime(reader.GetOrdinal("regTime"));
             DateTime dueTime = reader.GetDateTime(reader.GetOrdinal("dueTime"));
-            return new LibraryCard(libraryCardID,  name, regTime,  dueTime);
+            return new LibraryCard(libraryCardID,typeID,name, sex,ID,regTime,dueTime);
         }
     }
 }
