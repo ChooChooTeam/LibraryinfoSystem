@@ -43,7 +43,7 @@ namespace LibraryinfoSystem
             ReaderType readerType = BorrowWinAS.GetreaderTypeInfo(card.TypeID);
             textBox5.Text = readerType.TypeName;
 
-            string sql = "select  borrowRecord.circuBookNo,circuBookClass.bookName,borrowRecord.borrowDuration,borrowRecord.dateToReturn,(case  when borrowRecord.dateToReturn>GETDATE() then datediff(DAY,borrowRecord.dateToReturn,GETDATE())else -datediff(DAY,borrowRecord.dateToReturn,GETDATE())end)  as remainDays,borrowRecord.renewNum " +
+            string sql = "select  borrowRecord.circuBookNo,circuBookClass.bookName,borrowRecord.borrowDuration,borrowRecord.dateToReturn,datediff(DAY,GETDATE(),borrowRecord.dateToReturn) as remainDays,borrowRecord.renewNum " +
                 "from borrowRecord join (circuBook join circuBookClass on circuBook.isbn = circuBookClass.isbn)on borrowRecord.circuBookNo = circuBook.circuBookNo "+
                 "where borrowRecord.libraryCardID = @libraryCardID";
             SqlParameter para = new SqlParameter("@libraryCardID", libraryCardID);
