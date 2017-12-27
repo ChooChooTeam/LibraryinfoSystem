@@ -72,7 +72,7 @@
             this.label1.Font = new System.Drawing.Font("宋体", 10.8F);
             this.label1.Location = new System.Drawing.Point(46, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 15);
+            this.label1.Size = new System.Drawing.Size(85, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "借阅证号";
             // 
@@ -82,7 +82,7 @@
             this.textBox1.Location = new System.Drawing.Point(139, 40);
             this.textBox1.MaxLength = 6;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(90, 26);
+            this.textBox1.Size = new System.Drawing.Size(90, 30);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -170,7 +170,7 @@
             this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(31, 279);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 16);
+            this.label2.Size = new System.Drawing.Size(93, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "已借书籍";
             // 
@@ -180,7 +180,7 @@
             this.label3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.Location = new System.Drawing.Point(39, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 16);
+            this.label3.Size = new System.Drawing.Size(93, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "读者信息";
             // 
@@ -189,7 +189,7 @@
             this.textBox2.Location = new System.Drawing.Point(139, 81);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(90, 24);
+            this.textBox2.Size = new System.Drawing.Size(90, 28);
             this.textBox2.TabIndex = 6;
             // 
             // label4
@@ -197,7 +197,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(77, 85);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 15);
+            this.label4.Size = new System.Drawing.Size(47, 19);
             this.label4.TabIndex = 7;
             this.label4.Text = "姓名";
             // 
@@ -206,7 +206,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(270, 85);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 15);
+            this.label5.Size = new System.Drawing.Size(47, 19);
             this.label5.TabIndex = 8;
             this.label5.Text = "身份";
             // 
@@ -215,7 +215,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(451, 84);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 15);
+            this.label6.Size = new System.Drawing.Size(85, 19);
             this.label6.TabIndex = 10;
             this.label6.Text = "已借本数";
             // 
@@ -224,7 +224,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(644, 84);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 15);
+            this.label8.Size = new System.Drawing.Size(85, 19);
             this.label8.TabIndex = 12;
             this.label8.Text = "可借本数";
             // 
@@ -233,11 +233,12 @@
             this.textBox4.Location = new System.Drawing.Point(724, 81);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(77, 24);
+            this.textBox4.Size = new System.Drawing.Size(77, 28);
             this.textBox4.TabIndex = 13;
             // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(274, 184);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 32);
@@ -251,7 +252,7 @@
             this.textBox5.Location = new System.Drawing.Point(333, 81);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(82, 24);
+            this.textBox5.Size = new System.Drawing.Size(82, 28);
             this.textBox5.TabIndex = 16;
             // 
             // textBox3
@@ -259,7 +260,7 @@
             this.textBox3.Location = new System.Drawing.Point(531, 82);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(73, 24);
+            this.textBox3.Size = new System.Drawing.Size(73, 28);
             this.textBox3.TabIndex = 17;
             // 
             // button2
@@ -277,7 +278,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(35, 151);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 15);
+            this.label10.Size = new System.Drawing.Size(104, 19);
             this.label10.TabIndex = 22;
             this.label10.Text = "借书证状态";
             // 
@@ -286,7 +287,7 @@
             this.textBox8.Location = new System.Drawing.Point(139, 148);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(90, 24);
+            this.textBox8.Size = new System.Drawing.Size(90, 28);
             this.textBox8.TabIndex = 23;
             // 
             // label11
@@ -294,7 +295,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(37, 191);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 15);
+            this.label11.Size = new System.Drawing.Size(104, 19);
             this.label11.TabIndex = 24;
             this.label11.Text = "图书标识号";
             // 
@@ -303,7 +304,7 @@
             this.textBox9.Location = new System.Drawing.Point(139, 188);
             this.textBox9.MaxLength = 10;
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(90, 24);
+            this.textBox9.Size = new System.Drawing.Size(90, 28);
             this.textBox9.TabIndex = 25;
             this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged_1);
             this.textBox9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox9_KeyPress);
@@ -314,7 +315,7 @@
             this.label12.Font = new System.Drawing.Font("宋体", 9F);
             this.label12.Location = new System.Drawing.Point(309, 229);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 12);
+            this.label12.Size = new System.Drawing.Size(52, 15);
             this.label12.TabIndex = 28;
             this.label12.Text = "出版社";
             // 
@@ -324,7 +325,7 @@
             this.textBox11.Location = new System.Drawing.Point(139, 226);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(141, 21);
+            this.textBox11.Size = new System.Drawing.Size(141, 25);
             this.textBox11.TabIndex = 27;
             // 
             // label13
@@ -333,7 +334,7 @@
             this.label13.Font = new System.Drawing.Font("宋体", 9F);
             this.label13.Location = new System.Drawing.Point(82, 229);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(29, 12);
+            this.label13.Size = new System.Drawing.Size(37, 15);
             this.label13.TabIndex = 26;
             this.label13.Text = "书名";
             // 
@@ -343,7 +344,7 @@
             this.textBox10.Location = new System.Drawing.Point(367, 226);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(141, 21);
+            this.textBox10.Size = new System.Drawing.Size(141, 25);
             this.textBox10.TabIndex = 29;
             // 
             // label14
@@ -371,13 +372,13 @@
             this.label7.ForeColor = System.Drawing.Color.Red;
             this.label7.Location = new System.Drawing.Point(80, 255);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 12);
+            this.label7.Size = new System.Drawing.Size(39, 15);
             this.label7.TabIndex = 32;
-            this.label7.Text = "(书籍不存在)";
+            this.label7.Text = "    ";
             // 
             // BorrowWin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 639);
             this.Controls.Add(this.label7);
