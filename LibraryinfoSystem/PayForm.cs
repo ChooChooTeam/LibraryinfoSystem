@@ -27,8 +27,11 @@ namespace LibraryinfoSystem
                int damageIndex =int.Parse(myRow["damageIndex"].ToString());
                 string sql = "update damageRecord set damageRtnTime=GETDATE() where damageIndex=@damageIndex";
                 SqlParameter para = new SqlParameter("@damageIndex", damageIndex);
-                dataTable = SQLHelper.getDataTable(sql, para);
+                SQLHelper.Update(sql, para);
             }
+            dataTable.Clear();
+            textBox2.Clear();
+            button3.Enabled = false;
             MessageBox.Show("欠款已缴清");
         }
 
@@ -79,6 +82,7 @@ namespace LibraryinfoSystem
                 amount = amount + decimal.Parse(dataTable.Rows[i]["damageMoney"].ToString());
             }
             textBox2.Text = amount.ToString();
+            button3.Enabled = true;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -101,6 +105,11 @@ namespace LibraryinfoSystem
             {
                 e.Handled = true;
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            button3.Enabled = false;
         }
     }
 }
