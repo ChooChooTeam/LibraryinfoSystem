@@ -12,7 +12,7 @@ namespace DAL
     {
         public static CircuBookClass queryBookInfo(string circuBookNo)
         {
-            string sql = "select bookName,publishingHouse from circuBookClass, circuBook where circuBook.isbn = circuBookClass.isbn and circuBook.circuBookNo = @circuBookNo";
+            string sql = "select bookName,publishingHouse from circuBookClass, circuBook where circuBook.isbn = circuBookClass.isbn and circuBook.circuBookNo =(select circuBookNo from borrowRecord where circuBookNo=@circuBookNo and returnTime is null)";
             SqlParameter para = new SqlParameter("@circuBookNo", circuBookNo);
             SQLHelper.CoverToObject cto = new SQLHelper.CoverToObject(ReaderToBkPH);
             var list = SQLHelper.Query(sql, cto,para);
@@ -60,7 +60,6 @@ namespace DAL
         {
             string publishingHouse = reader.GetString(reader.GetOrdinal("publishingHouse"));
             string bookName = reader.GetString(reader.GetOrdinal("bookName"));
-            //return new CircuBookClass(null, bookName, null, null, null, publishingHouse, null, null);
             return new CircuBookClass(bookName, publishingHouse);
         }
 
