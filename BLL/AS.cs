@@ -27,16 +27,14 @@ namespace BLL
         }
         public static bool BookBorrowAble(String circuBookNo)
         {
-            try { 
+          
             String sql = "select * from borrowRecord where circuBookNo=@circuBookNo and returnTime is NULL; ";
             SqlParameter para = new SqlParameter("@circuBookNo", circuBookNo);
-            SQLHelper.getDataTable(sql, para);
+            if (SQLHelper.getDataTable(sql, para).Rows.Count > 0) {
+                return false;
             }
-            catch (System.ArgumentOutOfRangeException)
-            {
-                return true;
-            }
-            return false;
+            
+            return true;
         }
 
     }
