@@ -9,11 +9,11 @@ namespace Model
     
     public class ReaderType
     {
-        public ReaderType(int typeID,string typeName, DateTime borrowDuration,int reBorrowNum,int maxBorrowNum)
+        public ReaderType(int typeID,string typeName, int borrowLen, int reBorrowNum,int maxBorrowNum)
         {
             _typeID = typeID;
             _typeName = typeName;
-            _borrowDuration = borrowDuration;
+            _borrowLen = borrowLen;
             _reBorrowNum = reBorrowNum;
             _maxBorrowNum = maxBorrowNum;
         }
@@ -35,12 +35,12 @@ namespace Model
             }
         }
 
-        private DateTime _borrowDuration;
-        public DateTime BorrowDuration
+        private int _borrowLen;
+        public int BorrowDuration
         {
             get
             {
-                return _borrowDuration;
+                return _borrowLen;
             }
         }
 

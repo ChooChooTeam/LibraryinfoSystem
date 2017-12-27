@@ -17,7 +17,7 @@ namespace LibraryinfoSystem
 {
     public partial class BorrowWin : Form
     {
-        private DateTime BorrowDuration;
+        private int borrowLen;
         public BorrowWin()
         {
             InitializeComponent();
@@ -54,7 +54,7 @@ namespace LibraryinfoSystem
             int overTimeBookcount=datarows.Count();
             //textBox6.Text = overTimeBookcount.ToString();
             int canBorrowN = readerType.MaxBorrowNum- dataTable.Rows.Count;
-            BorrowDuration = readerType.BorrowDuration;
+            borrowLen = readerType.BorrowDuration;
             int borrowCardStatusInt = 0;
             String borrowCardStatusText="正常";
             if (overTimeBookcount > 0) {
@@ -202,10 +202,10 @@ namespace LibraryinfoSystem
                 
             }
             String sql = "INSERT INTO borrowRecord(libraryCardID, circuBookNo, borrowDuration, dateToReturn, renewNum) "
-                + "VALUES(@libraryCardID,@circuBookNo,GETDATE(),GETDATE()+@BorrowDuration,0);";
+                + "VALUES(@libraryCardID,@circuBookNo,GETDATE(),DATEADD(day,@borrowLen,GETDATE()),0);";
             SqlParameter para = new SqlParameter("@libraryCardID", textBox1.Text);
             SqlParameter para1 = new SqlParameter("@circuBookNo", textBox9.Text);
-            SqlParameter para2 = new SqlParameter("@borrowDuration", BorrowDuration.Year+"/"+BorrowDuration.Month+"/"+BorrowDuration.Day);
+            SqlParameter para2 = new SqlParameter("@borrowLen",borrowLen);
             SQLHelper.Update(sql, para,para1,para2);
 
         }
