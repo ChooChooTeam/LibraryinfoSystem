@@ -80,6 +80,16 @@ namespace LibraryinfoSystem
 
 
         }
+        private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in dataGridView1.Rows)
+            {
+                if (float.Parse(item.Cells[4].Value.ToString()) < 0)
+                {
+                    item.DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

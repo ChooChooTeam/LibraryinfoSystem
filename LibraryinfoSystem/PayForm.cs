@@ -73,7 +73,7 @@ namespace LibraryinfoSystem
             }
             textBox2.Text = amount.ToString();
         }
+     
 
- 
     }
 }
