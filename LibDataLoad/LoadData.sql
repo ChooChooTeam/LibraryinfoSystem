@@ -56,8 +56,8 @@ INSERT INTO libraryCard(typeID,name,sex,ID,regTime,dueTime) VALUES (3,'陈小','女
 
 
 
-
-
-
-
-
+--借书记录
+insert into borrowRecord values(100001,1,'2017/3/4',null,'2017/4/8',1);
+insert into borrowRecord values(100001,2,'2017/7/2',null,'2017/9/8',0);
+insert into borrowRecord values(100004,3,'2017/2/9',null,'2017/2/19',1);
+insert into borrowRecord values(100005,4,'2017/7/2',null,'2017/8/7',0);
