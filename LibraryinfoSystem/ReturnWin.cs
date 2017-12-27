@@ -70,6 +70,7 @@ namespace LibraryinfoSystem
         {
             if(BrokenCheckBox.CheckState==CheckState.Checked)
             {
+                comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
                 comboBox1.Enabled = true;
             }
             else
@@ -82,12 +83,7 @@ namespace LibraryinfoSystem
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            List<DamageReason> CBDamageReason = DAL.DamageInfo.getAllReason();
-            for(int i=0;i<CBDamageReason.Count();i++)
-            {
-                comboBox1.Items.Add(CBDamageReason[i]);
-            }
+            
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -104,6 +100,15 @@ namespace LibraryinfoSystem
                 {
                     e.KeyChar = (char)0;   //处理非法字符  
                 }
+            }
+        }
+
+        private void ReturnWin_Load(object sender, EventArgs e)
+        {
+            List<DamageReason> CBDamageReason = DAL.DamageInfo.getAllReason();
+            for (int i = 0; i < CBDamageReason.Count(); i++)
+            {
+                comboBox1.Items.Add(CBDamageReason[i].DamageExplain);
             }
         }
     }
