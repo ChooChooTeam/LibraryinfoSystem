@@ -53,7 +53,6 @@ namespace LibraryinfoSystem
             {
                 MainWin mainw = (MainWin)this.Owner;
                 mainw.Show();
-                mainw.Invalidate();
             }
             this.Close();
         }

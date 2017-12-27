@@ -102,8 +102,6 @@ namespace LibraryinfoSystem
             {
                 MainWin mainw = (MainWin)this.Owner;
                 mainw.Show();
-                mainw.Invalidate();
-                mainw.Update();
             }
             this.Close();
         }
@@ -136,7 +134,7 @@ namespace LibraryinfoSystem
 
         private void textBox9_TextChanged_1(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button3_Click_1(object sender, EventArgs e)
