@@ -102,6 +102,8 @@ namespace LibraryinfoSystem
             {
                 MainWin mainw = (MainWin)this.Owner;
                 mainw.Show();
+                mainw.Invalidate();
+                mainw.Update();
             }
             this.Close();
         }
@@ -144,37 +146,17 @@ namespace LibraryinfoSystem
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //只能输入数字
-            if (e.KeyChar == 0x20) e.KeyChar = (char)0;  //禁止空格键  
-            if ((e.KeyChar == 0x2D) && (((TextBox)sender).Text.Length == 0)) return;   //处理负数  
-            if (e.KeyChar > 0x20)
+            if (e.KeyChar != 8 && !Char.IsDigit(e.KeyChar))
             {
-                try
-                {
-                    double.Parse(((TextBox)sender).Text + e.KeyChar.ToString());
-                }
-                catch
-                {
-                    e.KeyChar = (char)0;   //处理非法字符  
-                }
+                e.Handled = true;
             }
         }
 
         private void textBox9_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //只能输入数字
-            if (e.KeyChar == 0x20) e.KeyChar = (char)0;  //禁止空格键  
-            if ((e.KeyChar == 0x2D) && (((TextBox)sender).Text.Length == 0)) return;   //处理负数  
-            if (e.KeyChar > 0x20)
+            if (e.KeyChar != 8 && !Char.IsDigit(e.KeyChar))
             {
-                try
-                {
-                    double.Parse(((TextBox)sender).Text + e.KeyChar.ToString());
-                }
-                catch
-                {
-                    e.KeyChar = (char)0;   //处理非法字符  
-                }
+                e.Handled = true;
             }
         }
     }
