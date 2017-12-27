@@ -80,6 +80,16 @@ namespace LibraryinfoSystem
 
 
         }
+        private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in dataGridView1.Rows)
+            {
+                if (float.Parse(item.Cells[4].Value.ToString()) < 0)
+                {
+                    item.DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -130,6 +140,42 @@ namespace LibraryinfoSystem
         private void button3_Click_1(object sender, EventArgs e)
         {
             
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //只能输入数字
+            if (e.KeyChar == 0x20) e.KeyChar = (char)0;  //禁止空格键  
+            if ((e.KeyChar == 0x2D) && (((TextBox)sender).Text.Length == 0)) return;   //处理负数  
+            if (e.KeyChar > 0x20)
+            {
+                try
+                {
+                    double.Parse(((TextBox)sender).Text + e.KeyChar.ToString());
+                }
+                catch
+                {
+                    e.KeyChar = (char)0;   //处理非法字符  
+                }
+            }
+        }
+
+        private void textBox9_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //只能输入数字
+            if (e.KeyChar == 0x20) e.KeyChar = (char)0;  //禁止空格键  
+            if ((e.KeyChar == 0x2D) && (((TextBox)sender).Text.Length == 0)) return;   //处理负数  
+            if (e.KeyChar > 0x20)
+            {
+                try
+                {
+                    double.Parse(((TextBox)sender).Text + e.KeyChar.ToString());
+                }
+                catch
+                {
+                    e.KeyChar = (char)0;   //处理非法字符  
+                }
+            }
         }
     }
 }
