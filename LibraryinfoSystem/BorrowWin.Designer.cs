@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -112,6 +112,7 @@
             this.Column5,
             this.Column6});
             this.dataGridView1.Location = new System.Drawing.Point(35, 322);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 27;
@@ -125,9 +126,9 @@
             // Column1
             // 
             this.Column1.DataPropertyName = "circuBookNo";
-            dataGridViewCellStyle4.Format = "D12";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Format = "D12";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column1.HeaderText = "索书号";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;

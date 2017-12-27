@@ -257,8 +257,12 @@ namespace LibraryinfoSystem
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 float remainDays =float.Parse(row.Cells[4].Value.ToString());
                 int reBorrowNum = int.Parse(row.Cells[5].Value.ToString());
-                if (remainDays>=0&& reBorrowNum<this.reBorrowNum) {
+                if (remainDays >= 0 && reBorrowNum < this.reBorrowNum)
+                {
                     button4.Enabled = true;
+                }
+                else {
+                    button4.Enabled = false;
                 }
             }
         }
