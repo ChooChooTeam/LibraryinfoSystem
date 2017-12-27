@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BorrowWinAS.cs" />
-    <Compile Include="Class2.cs" />
+    <Compile Include="AS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RetrunWinAS.cs" />
   </ItemGroup>
