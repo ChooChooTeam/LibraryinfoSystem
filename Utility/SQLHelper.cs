@@ -105,8 +105,24 @@ namespace Utility
 
                 return ds.Tables[0];
             }
+        }
 
 
+        /// <summary>
+        /// 执行更新数据库的指令
+        /// </summary>
+        /// <param name="sql">待执行的SQL语句</param>
+        /// <param name="para">SQL语句中使用的参数</param>
+        /// <returns>受到影响的行数</returns>
+        public static int Update(string sql,params SqlParameter[] para)
+        {
+            using (SqlConnection conn = new SqlConnection(sqlInfo))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddRange(para);
+                return cmd.ExecuteNonQuery();
+            }
         }
 
     }
