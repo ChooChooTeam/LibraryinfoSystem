@@ -2,9 +2,9 @@ use Library;
 
 
 -- 读者类型
-INSERT INTO readerType(typeName,borrowDuration,reBorrowNum,maxBorrowNum) VALUES ('本科生',30,1,30)
-INSERT INTO readerType(typeName,borrowDuration,reBorrowNum,maxBorrowNum) VALUES ('研究生',45,1,40)
-INSERT INTO readerType(typeName,borrowDuration,reBorrowNum,maxBorrowNum) VALUES ('教职工',60,1,50)
+INSERT INTO readerType(typeName,borrowLen,reBorrowNum,maxBorrowNum) VALUES ('本科生',30,1,30)
+INSERT INTO readerType(typeName,borrowLen,reBorrowNum,maxBorrowNum) VALUES ('研究生',45,1,40)
+INSERT INTO readerType(typeName,borrowLen,reBorrowNum,maxBorrowNum) VALUES ('教职工',60,1,50)
 
 
 -- 损坏原因
@@ -52,12 +52,19 @@ INSERT INTO libraryCard(typeID,name,sex,ID,regTime,dueTime) VALUES (2,'张春花','
 INSERT INTO libraryCard(typeID,name,sex,ID,regTime,dueTime) VALUES (3,'陈小','女','431012199601012836','2010/1/1','2035/9/1')
 
 
+--借书记录
+insert into borrowRecord values(100001,1,'2017/3/4',null,'2017/4/8',1);
+insert into borrowRecord values(100001,2,'2017/7/2',null,'2017/9/8',0);
+insert into borrowRecord values(100004,3,'2017/2/9',null,'2017/2/19',1);
+insert into borrowRecord values(100005,4,'2017/7/2',null,'2017/8/7',0);
 
 
-
-
-
-
-
-
-
+-- 损坏记录
+INSERT INTO damageRecord (damageReasonIndex,libraryCardID,circuBookNo,damageTime,damageMoney,damageRemark)
+VALUES (1,100001,7,'2017/12/20 14:31:00',12.32,'影响极其恶劣')
+INSERT INTO damageRecord (damageReasonIndex,libraryCardID,circuBookNo,damageTime,damageMoney,damageRemark)
+VALUES (1,100001,1,'2017/12/20 14:31:00',2.00,'轻微损失')
+INSERT INTO damageRecord (damageReasonIndex,libraryCardID,circuBookNo,damageTime,damageRtnTIme,damageMoney)
+VALUES (1,100001,7,'2017/10/1 11:31:00','2017/12/19 17:00:00',12.32)
+INSERT INTO damageRecord (damageReasonIndex,libraryCardID,circuBookNo,damageTime,damageMoney)
+VALUES (1,100002,7,'2017/12/20 14:31:00',12.32)

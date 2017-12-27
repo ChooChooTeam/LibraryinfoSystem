@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2017/12/26 20:22:02                          */
+/* Created on:     2017/12/27 11:50:34                          */
 /*==============================================================*/
 
 
@@ -398,7 +398,7 @@ go
 create table readerType (
    typeID               smallint             identity,
    typeName             char(20)             not null,
-   borrowDuration       datetime             not null,
+   borrowLen            int                  not null,
    reBorrowNum          smallint             not null,
    maxBorrowNum         smallint             not null,
    constraint PK_READERTYPE primary key nonclustered (typeID)
