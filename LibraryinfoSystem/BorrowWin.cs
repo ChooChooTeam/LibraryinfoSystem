@@ -18,6 +18,7 @@ namespace LibraryinfoSystem
     public partial class BorrowWin : Form
     {
         private int borrowLen;
+        private bool userBorrowAble = false,bookBorrowAble=false;
         public BorrowWin()
         {
             InitializeComponent();
@@ -41,9 +42,9 @@ namespace LibraryinfoSystem
 
             textBox2.Text = card._Name;
             ReaderType readerType = BorrowWinAS.GetreaderTypeInfo(card.TypeID);
-            textBox5.Text = readerType.TypeName;
+            textBox5.Text = readerType.TypeName.Replace(" ","");
 
-            string sql = "select  borrowRecord.circuBookNo,circuBookClass.bookName,borrowRecord.borrowDuration,borrowRecord.dateToReturn,(case  when borrowRecord.dateToReturn>GETDATE() then datediff(DAY,borrowRecord.dateToReturn,GETDATE())else -datediff(DAY,borrowRecord.dateToReturn,GETDATE())end)  as remainDays,borrowRecord.renewNum " +
+            string sql = "select  borrowRecord.circuBookNo,circuBookClass.bookName,borrowRecord.borrowDuration,borrowRecord.dateToReturn,datediff(DAY,GETDATE(),borrowRecord.dateToReturn) as remainDays,borrowRecord.renewNum " +
                 "from borrowRecord join (circuBook join circuBookClass on circuBook.isbn = circuBookClass.isbn)on borrowRecord.circuBookNo = circuBook.circuBookNo "+
                 "where borrowRecord.libraryCardID = @libraryCardID";
             SqlParameter para = new SqlParameter("@libraryCardID", libraryCardID);
@@ -77,6 +78,8 @@ namespace LibraryinfoSystem
             }
             else {
                 textBox8.BackColor = Color.Green;
+                userBorrowAble = true;
+                checkBorrowAble();
             }
             textBox4.Text = canBorrowN.ToString();
 
@@ -138,14 +141,39 @@ namespace LibraryinfoSystem
         {
             
             String circuBookNo = textBox9.Text;
+            textBox11.Text = "";
+            textBox10.Text = "";
+            label7.Text = "";
+            bookBorrowAble = false;
+            checkBorrowAble();
             if (circuBookNo.Length == 10)
             {
+                try
+                {
+                    CircuBookClass book = BookInfo.queryABookInfo(circuBookNo);
+                    textBox11.Text = book.BookName;
+                    textBox10.Text = book.PublishingHouse;
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    label7.Text = "图书标识号有误！";
+                    return;
+                }
+                if (!AS.BookBorrowAble(textBox9.Text))
+                {
+                    label7.Text = "书籍已被借出！";
 
-                CircuBookClass book = BookInfo.queryABookInfo(circuBookNo);
-                textBox11.Text = book.BookName;
-                textBox10.Text = book.PublishingHouse;
-                
+                }
+                else {
+
+                    label7.Text = "该书籍可借阅";
+                    bookBorrowAble = true;
+                    checkBorrowAble();
+
+                }
+
             }
+           
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -197,17 +225,35 @@ namespace LibraryinfoSystem
 
         private void button3_Click_3(object sender, EventArgs e)
         {
-            if (AS.BookBorrowAble(textBox9.Text)) {
-                label7.Text = "书籍已被借出！";
-                
-            }
+            
             String sql = "INSERT INTO borrowRecord(libraryCardID, circuBookNo, borrowDuration, dateToReturn, renewNum) "
                 + "VALUES(@libraryCardID,@circuBookNo,GETDATE(),DATEADD(day,@borrowLen,GETDATE()),0);";
             SqlParameter para = new SqlParameter("@libraryCardID", textBox1.Text);
             SqlParameter para1 = new SqlParameter("@circuBookNo", textBox9.Text);
             SqlParameter para2 = new SqlParameter("@borrowLen",borrowLen);
             SQLHelper.Update(sql, para,para1,para2);
+            textBox9.Text = "";
+            textBox10.Text = "";
+            textBox11.Text = "";
+            bookBorrowAble = false;
+            button1.PerformClick();
+            checkBorrowAble();
+            textBox9.Focus();
+        }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            userBorrowAble = false;
+            checkBorrowAble();
+        }
+        private void checkBorrowAble() {
+            if (userBorrowAble && bookBorrowAble)
+            {
+                button3.Enabled = true;
+            }
+            else {
+                button3.Enabled = false;
+            }
         }
     }
 }
