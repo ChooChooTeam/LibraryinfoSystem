@@ -50,6 +50,7 @@ namespace LibraryinfoSystem
                 }
             }
             textBox1.Text = null;
+            BrokenCheckBox.Checked = false;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -65,6 +66,7 @@ namespace LibraryinfoSystem
             {
                 this.textBox2.Text = null;
                 this.textBox3.Text = null;
+                BrokenCheckBox.Enabled = false;
                 button1.Enabled = false;
             }
         }
@@ -137,6 +139,7 @@ namespace LibraryinfoSystem
         {
             brokenCost = 0;
             button1.Enabled = false;
+            BrokenCheckBox.Enabled = false;
             List<DamageReason> CBDamageReason = DAL.DamageInfo.getAllReason();
             for (int i = 0; i < CBDamageReason.Count(); i++)
             {
@@ -149,10 +152,12 @@ namespace LibraryinfoSystem
             if (textBox2.Text == null)
             {
                 button1.Enabled = false;
+                BrokenCheckBox.Enabled = false;
             }
             else
             {
                 button1.Enabled = true;
+                BrokenCheckBox.Enabled = true;
             }
         }
     }
