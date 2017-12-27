@@ -2,9 +2,9 @@ use Library;
 
 
 -- 读者类型
-INSERT INTO readerType(typeName,borrowDuration,reBorrowNum,maxBorrowNum) VALUES ('本科生',30,1,30)
-INSERT INTO readerType(typeName,borrowDuration,reBorrowNum,maxBorrowNum) VALUES ('研究生',45,1,40)
-INSERT INTO readerType(typeName,borrowDuration,reBorrowNum,maxBorrowNum) VALUES ('教职工',60,1,50)
+INSERT INTO readerType(typeName,borrowLen,reBorrowNum,maxBorrowNum) VALUES ('本科生',30,1,30)
+INSERT INTO readerType(typeName,borrowLen,reBorrowNum,maxBorrowNum) VALUES ('研究生',45,1,40)
+INSERT INTO readerType(typeName,borrowLen,reBorrowNum,maxBorrowNum) VALUES ('教职工',60,1,50)
 
 
 -- 损坏原因
