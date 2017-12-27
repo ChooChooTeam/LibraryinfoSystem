@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
+using DAL;
 using Model;
 using Utility;
 
@@ -135,6 +136,15 @@ namespace LibraryinfoSystem
         private void textBox9_TextChanged_1(object sender, EventArgs e)
         {
             
+            String circuBookNo = textBox9.Text;
+            if (circuBookNo.Length == 10)
+            {
+
+                CircuBookClass book = BookInfo.queryABookInfo(circuBookNo);
+                textBox11.Text = book.BookName;
+                textBox10.Text = book.PublishingHouse;
+                
+            }
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -144,18 +154,44 @@ namespace LibraryinfoSystem
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != 8 && !Char.IsDigit(e.KeyChar))
+            //只能输入数字
+            if (e.KeyChar == 0x20) e.KeyChar = (char)0;  //禁止空格键  
+            if ((e.KeyChar == 0x2D) && (((TextBox)sender).Text.Length == 0)) return;   //处理负数  
+            if (e.KeyChar > 0x20)
             {
-                e.Handled = true;
+                try
+                {
+                    double.Parse(((TextBox)sender).Text + e.KeyChar.ToString());
+                }
+                catch
+                {
+                    e.KeyChar = (char)0;   //处理非法字符  
+                }
             }
         }
 
         private void textBox9_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != 8 && !Char.IsDigit(e.KeyChar))
+            //只能输入数字
+            if (e.KeyChar == 0x20) e.KeyChar = (char)0;  //禁止空格键  
+            if ((e.KeyChar == 0x2D) && (((TextBox)sender).Text.Length == 0)) return;   //处理负数  
+            if (e.KeyChar > 0x20)
             {
-                e.Handled = true;
+                try
+                {
+                    double.Parse(((TextBox)sender).Text + e.KeyChar.ToString());
+                }
+                catch
+                {
+                    e.KeyChar = (char)0;   //处理非法字符  
+                }
             }
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+           
+            
         }
     }
 }
