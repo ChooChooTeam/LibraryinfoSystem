@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using BLL;
+using DAL;
 namespace LibraryinfoSystem
 {
     public partial class ReturnWin : Form
@@ -65,9 +66,32 @@ namespace LibraryinfoSystem
             }
         }
 
+        private void BrokenCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(BrokenCheckBox.CheckState==CheckState.Checked)
+            {
+                comboBox1.Enabled = true;
+            }
+            else
+            {
+                comboBox1.DropDownStyle = ComboBoxStyle.DropDown;
+                comboBox1.Text = "";
+                comboBox1.Enabled = false;
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            List<DamageReason> CBDamageReason = DAL.DamageInfo.getAllReason();
+            for(int i=0;i<CBDamageReason.Count();i++)
+            {
+                comboBox1.Items.Add(CBDamageReason[i]);
+            }
+        }
+
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //只能输入数字
             if (e.KeyChar == 0x20) e.KeyChar = (char)0;  //禁止空格键  
             if ((e.KeyChar == 0x2D) && (((TextBox)sender).Text.Length == 0)) return;   //处理负数  
             if (e.KeyChar > 0x20)
