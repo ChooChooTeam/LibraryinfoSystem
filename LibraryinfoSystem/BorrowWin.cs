@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
+using DAL;
 using Model;
 using Utility;
 
@@ -134,7 +135,16 @@ namespace LibraryinfoSystem
 
         private void textBox9_TextChanged_1(object sender, EventArgs e)
         {
+            
+            String circuBookNo = textBox9.Text;
+            if (circuBookNo.Length == 10)
+            {
 
+                CircuBookClass book = BookInfo.queryABookInfo(circuBookNo);
+                textBox11.Text = book.BookName;
+                textBox10.Text = book.PublishingHouse;
+                
+            }
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -176,6 +186,12 @@ namespace LibraryinfoSystem
                     e.KeyChar = (char)0;   //处理非法字符  
                 }
             }
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+           
+            
         }
     }
 }
