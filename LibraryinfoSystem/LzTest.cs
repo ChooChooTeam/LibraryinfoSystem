@@ -27,11 +27,14 @@ namespace LibraryinfoSystem
         {
             // 由于所有的数据都会显示在最后的表格中
             // 所以查询语句必须谨慎的需要的行
-            string sql = "SELECT isbn,bookName,bookNum FROM circuBookClass";
-            dgvBook.DataSource = SQLHelper.getDataTable(sql);
+            //string sql = "SELECT isbn,bookName,bookNum FROM circuBookClass";
+            //dgvBook.DataSource = SQLHelper.getDataTable(sql);
 
-            var list = DAL.DamageInfo.getAllReason();
-            MessageBox.Show(DAL.DamageInfo.queryReasonByIndex(2).DamageExplain);
+            var cBookc = DAL.BookInfo.queryABookInfo("0000000002");
+            MessageBox.Show(cBookc.BookName);
+
+            //var list = DAL.DamageInfo.getAllReason();
+            //MessageBox.Show(DAL.DamageInfo.queryReasonByIndex(2).DamageExplain);
 
 
         }

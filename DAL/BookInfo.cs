@@ -22,19 +22,24 @@ namespace DAL
             return cBookc;   
         }
 
-        public static List<object> queryABookInfo(string circuBookNo)
+        /// <summary>
+        /// 根据书籍标识码查询对应书籍类的全部信息
+        /// </summary>
+        /// <param name="circuBookNo"></param>
+        /// <returns></returns>
+        public static CircuBookClass queryABookInfo(string circuBookNo)
         {
             // 注意连接字符串之间的空格
-            string sql = "SELECT circuBook.isbn,bookName" + 
+            string sql = "SELECT  circuBook.isbn,bookName,mainAuthor,otherAuthor,publicationYear,publishingHouse,price,bookNum " + 
                 " FROM circuBook JOIN circuBookClass ON (circuBook.isbn = circuBookClass.isbn)"+
                 " WHERE circuBookNo = @cNo";
             SqlParameter para = new SqlParameter("@cNo", circuBookNo);
 
-            SQLHelper.CoverToList ctl = new SQLHelper.CoverToList(ReaderToBookInfo);
+            SQLHelper.CoverToObject cto = new SQLHelper.CoverToObject(ReaderToCircuBookClass);
 
-            var list = SQLHelper.Query(sql, ctl, para);
-            
-            return list[0];
+            var cbookc = SQLHelper.Query(sql, cto, para)[0];
+
+            return cbookc as CircuBookClass;
         }
 
 
@@ -50,6 +55,7 @@ namespace DAL
             int bookNum = reader.GetInt16(reader.GetOrdinal("bookNum"));
             return new CircuBookClass(isbn, bookName, mainAuthor, otherAuthor, publicationYear, publishingHouse, price, bookNum);
         }
+
         private static CircuBookClass ReaderToBkPH(SqlDataReader reader)
         {
             string publishingHouse = reader.GetString(reader.GetOrdinal("publishingHouse"));
