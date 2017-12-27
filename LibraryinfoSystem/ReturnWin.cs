@@ -14,6 +14,7 @@ namespace LibraryinfoSystem
 {
     public partial class ReturnWin : Form
     {
+        static decimal brokenCost = 0;
         public ReturnWin()
         {
             InitializeComponent();
@@ -21,15 +22,34 @@ namespace LibraryinfoSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
+            double cost = 0;
+            if(DAL.ReturnInfo.getOverDueDay(textBox1.Text)<0)
+            {
+                cost = -0.1 * DAL.ReturnInfo.getOverDueDay(textBox1.Text);
+            }
             if (this.BrokenCheckBox.Checked)
             {
-                MessageBox.Show("还书成功，破损产生费用4元");
+                if(brokenCost>0)
+                {
+                    cost += (double)brokenCost;
+                    MessageBox.Show("还书成功，逾期和破损产生费用共计"+cost+"元！");
+                }
+                else
+                MessageBox.Show("还书成功，破损产生费用"+brokenCost+"元!");
             }
             else
             {
                 DAL.ReturnInfo.changeBorrowRecord(textBox1.Text);
-                MessageBox.Show("还书成功");
+                if(cost>0)
+                {
+                    MessageBox.Show("还书成功,逾期产生费用" + cost +"元！");
+                }
+                else
+                {
+                    MessageBox.Show("还书成功!" );
+                }
             }
+            textBox1.Text = null;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -39,7 +59,6 @@ namespace LibraryinfoSystem
                 CircuBookClass cBookc = BLL.RetrunWinAS.montorTextBox1Changed(this.textBox1.Text);
                 this.textBox2.Text = cBookc.BookName;
                 this.textBox3.Text = cBookc.PublishingHouse;
-                button1.Enabled = true;
                 
             }
             if(this.textBox1.Text.Length!=10)
@@ -86,7 +105,24 @@ namespace LibraryinfoSystem
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            List<DamageReason> CBDamageReason = DAL.DamageInfo.getAllReason();
+
+            if (CBDamageReason[0].DamageExplain==comboBox1.Text)
+            {
+                brokenCost += DAL.ReturnInfo.getPrice(textBox1.Text) * (decimal)0.1;
+            }
+            if (CBDamageReason[1].DamageExplain == comboBox1.Text)
+            {
+                brokenCost += DAL.ReturnInfo.getPrice(textBox1.Text) * (decimal)0.2;
+            }
+            if (CBDamageReason[2].DamageExplain == comboBox1.Text)
+            {
+                brokenCost += DAL.ReturnInfo.getPrice(textBox1.Text) * (decimal)0.5;
+            }
+            if (CBDamageReason[3].DamageExplain == comboBox1.Text)
+            {
+                brokenCost += DAL.ReturnInfo.getPrice(textBox1.Text);
+            }
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -99,10 +135,24 @@ namespace LibraryinfoSystem
 
         private void ReturnWin_Load(object sender, EventArgs e)
         {
+            brokenCost = 0;
+            button1.Enabled = false;
             List<DamageReason> CBDamageReason = DAL.DamageInfo.getAllReason();
             for (int i = 0; i < CBDamageReason.Count(); i++)
             {
                 comboBox1.Items.Add(CBDamageReason[i].DamageExplain);
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text == null)
+            {
+                button1.Enabled = false;
+            }
+            else
+            {
+                button1.Enabled = true;
             }
         }
     }
