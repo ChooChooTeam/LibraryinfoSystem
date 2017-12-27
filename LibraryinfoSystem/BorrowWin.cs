@@ -17,7 +17,8 @@ namespace LibraryinfoSystem
 {
     public partial class BorrowWin : Form
     {
-        private int borrowLen;
+        private int borrowLen=0;
+        private int reBorrowNum=0;
         private bool userBorrowAble = false,bookBorrowAble=false;
         public BorrowWin()
         {
@@ -27,6 +28,7 @@ namespace LibraryinfoSystem
         private void button1_Click(object sender, EventArgs e)
         {
             String libraryCardID = textBox1.Text;
+            button4.Enabled = false;
             LibraryCard card;
             try
             {
@@ -56,6 +58,7 @@ namespace LibraryinfoSystem
             //textBox6.Text = overTimeBookcount.ToString();
             int canBorrowN = readerType.MaxBorrowNum- dataTable.Rows.Count;
             borrowLen = readerType.BorrowDuration;
+            reBorrowNum = readerType.ReBorrowNum;
             int borrowCardStatusInt = 0;
             String borrowCardStatusText="正常";
             if (overTimeBookcount > 0) {
@@ -82,7 +85,7 @@ namespace LibraryinfoSystem
                 checkBorrowAble();
             }
             textBox4.Text = canBorrowN.ToString();
-
+            dataGridView1.ClearSelection();
 
         }
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
@@ -219,8 +222,9 @@ namespace LibraryinfoSystem
 
         private void button3_Click_2(object sender, EventArgs e)
         {
-           
+         
             
+
         }
 
         private void button3_Click_3(object sender, EventArgs e)
@@ -246,6 +250,32 @@ namespace LibraryinfoSystem
             userBorrowAble = false;
             checkBorrowAble();
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1) {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                float remainDays =float.Parse(row.Cells[4].Value.ToString());
+                int reBorrowNum = int.Parse(row.Cells[5].Value.ToString());
+                if (remainDays>=0&& reBorrowNum<this.reBorrowNum) {
+                    button4.Enabled = true;
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dataGridView1.SelectedRows[0];
+            string circuBookNo = row.Cells[0].Value.ToString();
+            string sql = "update borrowRecord set renewNum = renewNum + 1, dateToReturn = DATEADD(day, @borrowLen, dateToReturn) "
+             + "where circuBookNo = @circuBookNo and returnTime is null;";
+            SqlParameter para1 = new SqlParameter("@borrowLen", borrowLen);
+            SqlParameter para2 = new SqlParameter("@circuBookNo", circuBookNo);
+            SQLHelper.Update(sql,para1, para2);
+            button1.PerformClick();
+
+        }
+
         private void checkBorrowAble() {
             if (userBorrowAble && bookBorrowAble)
             {

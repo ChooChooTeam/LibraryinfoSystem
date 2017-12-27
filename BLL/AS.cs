@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -10,20 +11,20 @@ namespace BLL
 {
     public  class AS
     {
-            static public bool HaveLibraryCard(String libraryCardID) {
-            ;
+            static public LibraryCard HaveLibraryCard(String libraryCardID) {
+            LibraryCard card;
             try
             {
-                 BorrowWinAS.GetLibraryCardIdInfo(libraryCardID);
+                card=BorrowWinAS.GetLibraryCardIdInfo(libraryCardID);
 
             }
             catch (System.ArgumentOutOfRangeException)
             {
                 
 
-                return false;
+                return null;
             }
-            return true;
+            return card;
         }
         public static bool BookBorrowAble(String circuBookNo)
         {

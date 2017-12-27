@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utility;
 using BLL;
+using Model;
 
 namespace LibraryinfoSystem
 {
@@ -58,11 +59,13 @@ namespace LibraryinfoSystem
         {
 
             String libraryCardID=textBox1.Text;
-            if (!AS.HaveLibraryCard(libraryCardID)) {
+            LibraryCard card = AS.HaveLibraryCard(libraryCardID);
+            if (null == card)
+            {
                 MessageBox.Show("用户ID错误！");
                 return;
             }
-
+            label6.Text = card._Name;
             string sql = "select damageRecord.damageIndex,damageReason.damageExplain,circuBookClass.bookName,damageRecord.damageTime,damageRecord.damageMoney "+
                     "from damageRecord join(circuBook join circuBookClass on circuBook.isbn = circuBookClass.isbn)on damageRecord.circuBookNo = circuBook.circuBookNo "+
                     "join damageReason on damageReason.damageReasonIndex = damageRecord.damageReasonIndex "+
@@ -109,6 +112,7 @@ namespace LibraryinfoSystem
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            label6.Text = "";
             button3.Enabled = false;
         }
     }
