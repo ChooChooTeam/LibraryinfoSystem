@@ -197,11 +197,15 @@ namespace LibraryinfoSystem
 
         private void button3_Click_3(object sender, EventArgs e)
         {
+            if (AS.BookBorrowAble(textBox9.Text)) {
+                label7.Text = "书籍已被借出！";
+                
+            }
             String sql = "INSERT INTO borrowRecord(libraryCardID, circuBookNo, borrowDuration, dateToReturn, renewNum) "
                 + "VALUES(@libraryCardID,@circuBookNo,GETDATE(),GETDATE()+@BorrowDuration,0);";
             SqlParameter para = new SqlParameter("@libraryCardID", textBox1.Text);
             SqlParameter para1 = new SqlParameter("@circuBookNo", textBox9.Text);
-            SqlParameter para2 = new SqlParameter("@borrowDuration", BorrowDuration.ToShortDateString());
+            SqlParameter para2 = new SqlParameter("@borrowDuration", BorrowDuration.Year+"/"+BorrowDuration.Month+"/"+BorrowDuration.Day);
             SQLHelper.Update(sql, para,para1,para2);
 
         }

@@ -19,12 +19,12 @@ namespace LibraryinfoSystem
         {
             InitializeComponent();
         }
-
+        private DataTable dataTable;
         private void button3_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow item in dataGridView1.Rows)
+            foreach (DataRow myRow in dataTable.Rows)
             {
-               int damageIndex =int.Parse(item.Cells["damageIndex"].Value.ToString());
+               int damageIndex =int.Parse(myRow["damageIndex"].ToString());
                 string sql = "update damageRecord set damageRtnTime=GETDATE() where damageIndex=@damageIndex";
                 SqlParameter para = new SqlParameter("@damageIndex", damageIndex);
                 dataTable = SQLHelper.getDataTable(sql, para);
@@ -50,7 +50,7 @@ namespace LibraryinfoSystem
                 mainw.Show();
             }
         }
-        private DataTable dataTable;
+        
         private void button2_Click(object sender, EventArgs e)
         {
 
