@@ -39,6 +39,11 @@ namespace LibraryinfoSystem
                 this.textBox3.Text = cBookc.PublishingHouse;
                 
             }
+            if(this.textBox1.Text.Length!=10)
+            {
+                this.textBox2.Text = null;
+                this.textBox3.Text = null;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
