@@ -22,7 +22,14 @@ namespace LibraryinfoSystem
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            foreach (DataGridViewRow item in dataGridView1.Rows)
+            {
+               int damageIndex =int.Parse(item.Cells["damageIndex"].Value.ToString());
+                string sql = "update damageRecord set damageRtnTime=GETDATE() where damageIndex=@damageIndex";
+                SqlParameter para = new SqlParameter("@damageIndex", damageIndex);
+                dataTable = SQLHelper.getDataTable(sql, para);
+            }
+            MessageBox.Show("欠款已缴清");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,7 +50,7 @@ namespace LibraryinfoSystem
                 mainw.Show();
             }
         }
-
+        private DataTable dataTable;
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -58,7 +65,7 @@ namespace LibraryinfoSystem
                     "join damageReason on damageReason.damageReasonIndex = damageRecord.damageReasonIndex "+
                     "where damageRecord.damageRtnTIme is NULL and damageRecord.libraryCardID = @libraryCardID";
             SqlParameter para = new SqlParameter("@libraryCardID", libraryCardID);
-            DataTable dataTable;
+            
             dataTable = SQLHelper.getDataTable(sql, para);
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = dataTable;
