@@ -62,6 +62,7 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -236,13 +237,13 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(274, 182);
+            this.button3.Location = new System.Drawing.Point(274, 184);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 32);
             this.button3.TabIndex = 15;
             this.button3.Text = "借书";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_2);
+            this.button3.Click += new System.EventHandler(this.button3_Click_3);
             // 
             // textBox5
             // 
@@ -273,7 +274,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(35, 148);
+            this.label10.Location = new System.Drawing.Point(35, 151);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 15);
             this.label10.TabIndex = 22;
@@ -281,7 +282,7 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(139, 145);
+            this.textBox8.Location = new System.Drawing.Point(139, 148);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(90, 24);
@@ -290,7 +291,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(37, 189);
+            this.label11.Location = new System.Drawing.Point(37, 191);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(82, 15);
             this.label11.TabIndex = 24;
@@ -298,7 +299,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(139, 186);
+            this.textBox9.Location = new System.Drawing.Point(139, 188);
             this.textBox9.MaxLength = 10;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(90, 24);
@@ -309,41 +310,45 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(354, 228);
+            this.label12.Font = new System.Drawing.Font("宋体", 9F);
+            this.label12.Location = new System.Drawing.Point(309, 229);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(52, 15);
+            this.label12.Size = new System.Drawing.Size(41, 12);
             this.label12.TabIndex = 28;
             this.label12.Text = "出版社";
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(139, 225);
+            this.textBox11.Font = new System.Drawing.Font("宋体", 9F);
+            this.textBox11.Location = new System.Drawing.Point(139, 226);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(178, 24);
+            this.textBox11.Size = new System.Drawing.Size(141, 21);
             this.textBox11.TabIndex = 27;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(82, 228);
+            this.label13.Font = new System.Drawing.Font("宋体", 9F);
+            this.label13.Location = new System.Drawing.Point(82, 229);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(37, 15);
+            this.label13.Size = new System.Drawing.Size(29, 12);
             this.label13.TabIndex = 26;
             this.label13.Text = "书名";
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(440, 225);
+            this.textBox10.Font = new System.Drawing.Font("宋体", 9F);
+            this.textBox10.Location = new System.Drawing.Point(367, 226);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(178, 24);
+            this.textBox10.Size = new System.Drawing.Size(141, 21);
             this.textBox10.TabIndex = 29;
             // 
             // label14
             // 
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label14.Location = new System.Drawing.Point(-2, 128);
+            this.label14.Location = new System.Drawing.Point(-2, 121);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(916, 2);
             this.label14.TabIndex = 30;
@@ -358,11 +363,23 @@
             this.label15.TabIndex = 31;
             this.label15.Text = "                    ";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("宋体", 9F);
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(80, 255);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 12);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "(书籍不存在)";
+            // 
             // BorrowWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 639);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox10);
@@ -438,5 +455,6 @@
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label7;
     }
 }
