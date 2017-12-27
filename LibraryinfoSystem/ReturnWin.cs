@@ -27,6 +27,7 @@ namespace LibraryinfoSystem
             }
             else
             {
+                DAL.ReturnInfo.changeBorrowRecord(textBox1.Text);
                 MessageBox.Show("还书成功");
             }
         }
@@ -38,12 +39,14 @@ namespace LibraryinfoSystem
                 CircuBookClass cBookc = BLL.RetrunWinAS.montorTextBox1Changed(this.textBox1.Text);
                 this.textBox2.Text = cBookc.BookName;
                 this.textBox3.Text = cBookc.PublishingHouse;
+                button1.Enabled = true;
                 
             }
             if(this.textBox1.Text.Length!=10)
             {
                 this.textBox2.Text = null;
                 this.textBox3.Text = null;
+                button1.Enabled = false;
             }
         }
 
