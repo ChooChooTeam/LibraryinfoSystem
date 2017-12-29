@@ -29,7 +29,8 @@ namespace LibraryinfoSystem
             }
             if (this.BrokenCheckBox.Checked)
             {
-                if(brokenCost>0)
+                DAL.ReturnInfo.changeBorrowRecord(textBox1.Text);
+                if (brokenCost>0)
                 {
                     cost += (double)brokenCost;
                     MessageBox.Show("还书成功，逾期和破损产生费用共计"+cost+"元！");
@@ -57,6 +58,7 @@ namespace LibraryinfoSystem
         {
             if (this.textBox1.Text.Length == 10)
             {
+                BrokenCheckBox.CheckState = CheckState.Unchecked;
                 CircuBookClass cBookc = BLL.RetrunWinAS.montorTextBox1Changed(this.textBox1.Text);
                 this.textBox2.Text = cBookc.BookName;
                 this.textBox3.Text = cBookc.PublishingHouse;
@@ -92,15 +94,20 @@ namespace LibraryinfoSystem
 
         private void BrokenCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if(BrokenCheckBox.CheckState==CheckState.Checked)
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            if (BrokenCheckBox.CheckState==CheckState.Checked)
             {
-                comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+                button1.Enabled = false;
                 comboBox1.Enabled = true;
+                comboBox1.Text = null;
             }
             else
             {
-                comboBox1.DropDownStyle = ComboBoxStyle.DropDown;
-                comboBox1.Text = "";
+                if(textBox2.Text!=null)
+                {
+                    button1.Enabled = true;
+                }
+                comboBox1.Text = null;
                 comboBox1.Enabled = false;
             }
         }
@@ -108,7 +115,10 @@ namespace LibraryinfoSystem
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<DamageReason> CBDamageReason = DAL.DamageInfo.getAllReason();
-
+            if(comboBox1.Text!=null)
+            {
+                button1.Enabled = true;
+            }
             if (CBDamageReason[0].DamageExplain==comboBox1.Text)
             {
                 brokenCost += DAL.ReturnInfo.getPrice(textBox1.Text) * (decimal)0.1;
@@ -140,6 +150,7 @@ namespace LibraryinfoSystem
             brokenCost = 0;
             button1.Enabled = false;
             BrokenCheckBox.Enabled = false;
+            comboBox1.Text = null;
             List<DamageReason> CBDamageReason = DAL.DamageInfo.getAllReason();
             for (int i = 0; i < CBDamageReason.Count(); i++)
             {
