@@ -66,9 +66,11 @@ namespace LibraryinfoSystem
             }
             if(this.textBox1.Text.Length!=10)
             {
+                label2.Enabled = false;
                 this.textBox2.Text = null;
                 this.textBox3.Text = null;
                 BrokenCheckBox.Enabled = false;
+                comboBox1.Text = null;
                 button1.Enabled = false;
             }
         }
@@ -94,16 +96,18 @@ namespace LibraryinfoSystem
 
         private void BrokenCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            //comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             if (BrokenCheckBox.CheckState==CheckState.Checked)
             {
+                label2.Enabled = true;
                 button1.Enabled = false;
                 comboBox1.Enabled = true;
                 comboBox1.Text = null;
             }
             else
             {
-                if(textBox2.Text!=null)
+                label2.Enabled = false;
+                if (textBox2.Text!=null)
                 {
                     button1.Enabled = true;
                 }
@@ -147,6 +151,7 @@ namespace LibraryinfoSystem
 
         private void ReturnWin_Load(object sender, EventArgs e)
         {
+            label2.Enabled = false;
             brokenCost = 0;
             button1.Enabled = false;
             BrokenCheckBox.Enabled = false;
@@ -162,6 +167,7 @@ namespace LibraryinfoSystem
         {
             if (textBox2.Text == null)
             {
+                
                 button1.Enabled = false;
                 BrokenCheckBox.Enabled = false;
             }
