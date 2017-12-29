@@ -80,7 +80,7 @@ namespace LibraryinfoSystem
                 MainWin mainw = (MainWin)this.Owner;
                 mainw.Show();
             }
-            this.Close();
+            this.Dispose();
         }
 
         private void ReturnWin_FormClosing(object sender, FormClosingEventArgs e)
