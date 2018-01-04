@@ -29,6 +29,7 @@ namespace LibraryinfoSystem
         {
             String libraryCardID = textBox1.Text;
             button4.Enabled = false;
+            label16.Text = "";
             LibraryCard card;
             try
             {
@@ -48,7 +49,7 @@ namespace LibraryinfoSystem
 
             string sql = "select  borrowRecord.circuBookNo,circuBookClass.bookName,borrowRecord.borrowDuration,borrowRecord.dateToReturn,datediff(DAY,GETDATE(),borrowRecord.dateToReturn) as remainDays,borrowRecord.renewNum " +
                 "from borrowRecord join (circuBook join circuBookClass on circuBook.isbn = circuBookClass.isbn)on borrowRecord.circuBookNo = circuBook.circuBookNo "+
-                "where borrowRecord.libraryCardID = @libraryCardID";
+                "where returnTime is null and borrowRecord.libraryCardID = @libraryCardID";
             SqlParameter para = new SqlParameter("@libraryCardID", libraryCardID);
             DataTable dataTable= SQLHelper.getDataTable(sql,para);
             dataGridView1.DataSource =dataTable;
@@ -61,11 +62,25 @@ namespace LibraryinfoSystem
             reBorrowNum = readerType.ReBorrowNum;
             int borrowCardStatusInt = 0;
             String borrowCardStatusText="正常";
+
+            if (canBorrowN == 0)
+            {
+                borrowCardStatusInt = 2;
+                canBorrowN = 0;
+                borrowCardStatusText = "可借数达上限";
+            }
             if (overTimeBookcount > 0) {
                 borrowCardStatusInt = 1;
                 canBorrowN = 0;
                 borrowCardStatusText="有书过期";
             }
+            if (BorrowWinAS.GetUserHaveMoneyToPay(libraryCardID))
+            {
+                borrowCardStatusInt = 1;
+                canBorrowN = 0;
+                borrowCardStatusText = "欠费未缴清";
+            }
+           
             if (card.DueTime < DateTime.Now) {
                 borrowCardStatusInt = 1;
                 canBorrowN = 0;
@@ -74,13 +89,18 @@ namespace LibraryinfoSystem
             //TODO:有未缴费项
 
             textBox8.Text = borrowCardStatusText;
-            if (borrowCardStatusInt > 0)
+            if (borrowCardStatusInt == 1)
             {
                 textBox8.BackColor = Color.Red;
-
+                textBox8.ForeColor = Color.Black;
+            }
+            else if(borrowCardStatusInt==2){
+                textBox8.BackColor = Color.Yellow;
+                textBox8.ForeColor = Color.Black;
             }
             else {
                 textBox8.BackColor = Color.Green;
+                textBox8.ForeColor = Color.White;
                 userBorrowAble = true;
                 checkBorrowAble();
             }
@@ -94,7 +114,8 @@ namespace LibraryinfoSystem
             {
                 if (float.Parse(item.Cells[4].Value.ToString()) < 0)
                 {
-                    item.DefaultCellStyle.BackColor = Color.Red;
+                    
+                    item.Cells[4].Style.BackColor = Color.Red;
                 }
             }
         }
@@ -147,6 +168,7 @@ namespace LibraryinfoSystem
             textBox11.Text = "";
             textBox10.Text = "";
             label7.Text = "";
+            label7.ForeColor = Color.Red;
             bookBorrowAble = false;
             checkBorrowAble();
             if (circuBookNo.Length == 10)
@@ -168,11 +190,10 @@ namespace LibraryinfoSystem
 
                 }
                 else {
-
+                    label7.ForeColor = Color.Green;
                     label7.Text = "该书籍可借阅";
                     bookBorrowAble = true;
                     checkBorrowAble();
-
                 }
 
             }
@@ -188,6 +209,11 @@ namespace LibraryinfoSystem
         {
             //只能输入数字
             if (e.KeyChar == 0x20) e.KeyChar = (char)0;  //禁止空格键  
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                button1.PerformClick();
+                       
+            }
             if ((e.KeyChar == 0x2D) && (((TextBox)sender).Text.Length == 0)) return;   //处理负数  
             if (e.KeyChar > 0x20)
             {
@@ -229,7 +255,7 @@ namespace LibraryinfoSystem
 
         private void button3_Click_3(object sender, EventArgs e)
         {
-            
+            label16.Text = "";
             String sql = "INSERT INTO borrowRecord(libraryCardID, circuBookNo, borrowDuration, dateToReturn, renewNum) "
                 + "VALUES(@libraryCardID,@circuBookNo,GETDATE(),DATEADD(day,@borrowLen,GETDATE()),0);";
             SqlParameter para = new SqlParameter("@libraryCardID", textBox1.Text);
@@ -259,9 +285,20 @@ namespace LibraryinfoSystem
                 int reBorrowNum = int.Parse(row.Cells[5].Value.ToString());
                 if (remainDays >= 0 && reBorrowNum < this.reBorrowNum)
                 {
+                    label16.Text = "";
                     button4.Enabled = true;
                 }
                 else {
+                    if (remainDays < 0)
+                    {
+                        label16.Text = "该书已过期！请先还书！";
+                    }
+                    else
+                    {
+
+                        label16.Text = "该书续借次数已达上限！";
+                    }
+
                     button4.Enabled = false;
                 }
             }
@@ -269,6 +306,7 @@ namespace LibraryinfoSystem
 
         private void button4_Click(object sender, EventArgs e)
         {
+            label16.Text = "";
             DataGridViewRow row = dataGridView1.SelectedRows[0];
             string circuBookNo = row.Cells[0].Value.ToString();
             string sql = "update borrowRecord set renewNum = renewNum + 1, dateToReturn = DATEADD(day, @borrowLen, dateToReturn) "
@@ -279,7 +317,6 @@ namespace LibraryinfoSystem
             button1.PerformClick();
 
         }
-
         private void checkBorrowAble() {
             if (userBorrowAble && bookBorrowAble)
             {
