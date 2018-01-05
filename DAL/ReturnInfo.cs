@@ -11,6 +11,25 @@ namespace DAL
 {
     public class ReturnInfo
     {
+        public static void InsertDamageRecord(int damageReasonIndex,string circuBookNo,decimal damageMoney)
+        {
+            string sql1 = "select libraryCardID from borrowRecord where circuBookNo=@circuBookNo and returnTime is NULL";
+            SQLHelper.CoverToObject cto1 = new SQLHelper.CoverToObject(ReaderToID);
+            SqlParameter para1 = new SqlParameter("@circuBookNo", circuBookNo);
+            var list = SQLHelper.Query(sql1, cto1, para1);
+            int ID = (int)list[0];
+            SqlParameter para2 = new SqlParameter("@damageReasonIndex", damageReasonIndex);
+            string sql2 = "insert into damageRecord(damageReasonIndex,libraryCardID,circuBookNo,damageTime,damageMoney) values(@damageReasonIndex,@libraryCardID,@circuBookNo,GETDATE(),@damageMoney)";
+            SqlParameter para3 = new SqlParameter("@libraryCardID", ID);
+            SqlParameter para4 = new SqlParameter("@damageMoney", damageMoney);
+            SqlParameter para5 = new SqlParameter("@circuBookNo", circuBookNo);
+            SQLHelper.Update(sql2, para2, para3, para5, para4);
+        }
+        public static object ReaderToID(SqlDataReader reader)
+        {
+            int libraryCardID = reader.GetInt32(reader.GetOrdinal("libraryCardID"));
+            return libraryCardID;
+        }
         public static void changeBorrowRecord(string circuBookNo)
         {
             string sql = "update borrowRecord set returnTime=GETDATE() where circuBookNo=@circuBookNo and returnTime is null";
@@ -52,5 +71,6 @@ namespace DAL
             decimal price = reader.GetDecimal(reader.GetOrdinal("price"));
             return price;
         }
+        
     }
 }

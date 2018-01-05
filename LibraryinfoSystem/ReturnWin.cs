@@ -14,6 +14,7 @@ namespace LibraryinfoSystem
 {
     public partial class ReturnWin : Form
     {
+        static int damageReason = 0;
         static decimal brokenCost = 0;
         public ReturnWin()
         {
@@ -29,14 +30,31 @@ namespace LibraryinfoSystem
             }
             if (this.BrokenCheckBox.Checked)
             {
-                DAL.ReturnInfo.changeBorrowRecord(textBox1.Text);
+                
                 if (brokenCost>0)
                 {
+                    try
+                    {
+                        DAL.ReturnInfo.InsertDamageRecord(damageReason, textBox1.Text, brokenCost);
+                    }
+                    catch(ArgumentOutOfRangeException)
+                    {
+                    }
                     cost += (double)brokenCost;
                     MessageBox.Show("还书成功，逾期和破损产生费用共计"+cost+"元！");
                 }
                 else
-                MessageBox.Show("还书成功，破损产生费用"+brokenCost+"元!");
+                {
+                    try
+                    {
+                        DAL.ReturnInfo.InsertDamageRecord(damageReason, textBox1.Text, brokenCost);
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                    }
+                    MessageBox.Show("还书成功，破损产生费用" + brokenCost + "元!");
+                }
+                
             }
             else
             {
@@ -52,6 +70,7 @@ namespace LibraryinfoSystem
             }
             textBox1.Text = null;
             BrokenCheckBox.Checked = false;
+            DAL.ReturnInfo.changeBorrowRecord(textBox1.Text);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -125,18 +144,23 @@ namespace LibraryinfoSystem
             }
             if (CBDamageReason[0].DamageExplain==comboBox1.Text)
             {
+                damageReason = 1;
                 brokenCost += DAL.ReturnInfo.getPrice(textBox1.Text) * (decimal)0.1;
             }
             if (CBDamageReason[1].DamageExplain == comboBox1.Text)
             {
+                damageReason = 2;
                 brokenCost += DAL.ReturnInfo.getPrice(textBox1.Text) * (decimal)0.2;
             }
             if (CBDamageReason[2].DamageExplain == comboBox1.Text)
             {
+                damageReason = 3;
+
                 brokenCost += DAL.ReturnInfo.getPrice(textBox1.Text) * (decimal)0.5;
             }
             if (CBDamageReason[3].DamageExplain == comboBox1.Text)
             {
+                damageReason = 4;
                 brokenCost += DAL.ReturnInfo.getPrice(textBox1.Text);
             }
         }
