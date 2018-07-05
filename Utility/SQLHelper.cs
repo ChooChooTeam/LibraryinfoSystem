@@ -122,6 +122,9 @@ namespace Utility
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddRange(para);
                 return cmd.ExecuteNonQuery();
+
+
+                // somt
             }
         }
 
